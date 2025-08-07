@@ -1,0 +1,347 @@
+/* 全局样式重置，确保字体生效 */
+.admin-container {
+  padding: 16px;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* 媒体查询确保在手机设备上应用合适的字体大小 */
+@media screen and (max-width: 768px) {
+  .admin-container {
+    font-size: 16px !important;
+  }
+  
+  // .admin-container * {
+  //   font-size: 16px !important;
+  // }
+
+  
+  .admin-container .admin-title {
+    font-size: 22px !important;
+  }
+  
+  .admin-container .section-title {
+    font-size: 20px !important;
+  }
+  
+  .admin-container .stat-value {
+    font-size: 24px !important;
+  }
+  
+  .admin-container .stat-label {
+    font-size: 16px !important;
+  }
+  
+  .admin-container .submission-time .time-label,
+  .admin-container .submission-time .time-value {
+    font-size: 16px !important;
+  }
+  
+  .admin-container .card-actions .action-button {
+    font-size: 16px !important;
+    padding: 10px !important;
+    min-height: 44px !important;
+    min-width: 60px !important;
+  }
+  
+  .admin-container .info-item .label,
+  .admin-container .info-item .value {
+    font-size: 16px !important;
+  }
+  
+  .admin-container .search-input {
+    font-size: 16px !important;
+    height: 44px !important;
+  }
+  
+  .admin-container .modal-content {
+    .modal-title {
+      font-size: 20px !important;
+    }
+    
+    .detail-label,
+    .detail-value {
+      font-size: 16px !important;
+    }
+  }
+  
+  .admin-container .back-button {
+    font-size: 18px !important;
+    padding: 10px 14px !important;
+  }
+}
+
+.admin-header {
+  margin-bottom: 20px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.back-button {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  margin-right: 10px;
+  min-width: 44px;
+  text-align: center;
+  
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+.admin-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.admin-search {
+  margin-bottom: 10px;
+  
+  .search-input {
+    width: 100%;
+    height: 40px;
+    border-radius: 18px;
+    border: 1px solid #ddd;
+    padding: 0 15px;
+    background-color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+}
+
+.admin-stats {
+  display: flex;
+  margin-bottom: 16px;
+  
+  .stat-item {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px 8px;
+    margin-right: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    
+    &:last-child {
+      margin-right: 0;
+    }
+    
+    .stat-value {
+      display: block;
+      font-size: 22px;
+      font-weight: bold;
+      color: #4a6cf7;
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+.admin-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  
+  .submission-time {
+    max-width: 65%;
+    margin-bottom: 4px;
+    
+    .time-label {
+      font-size: 15px;
+      color: #666;
+    }
+    
+    .time-value {
+      font-size: 15px;
+      color: #333;
+      margin-left: 5px;
+    }
+  }
+  
+  .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    
+    .action-button {
+      display: inline-block;
+      padding: 8px 10px;
+      font-size: 15px;
+      color: #4a6cf7;
+      margin-left: 8px;
+      border-radius: 4px;
+      min-height: 40px;
+      min-width: 48px;
+      text-align: center;
+      
+      &.delete {
+        color: #f56c6c;
+      }
+      
+      &:active {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.card-content {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.content-section {
+  margin-bottom: 14px;
+  
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .info-item {
+    display: flex;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    
+    .label {
+      font-size: 16px;
+      color: #666;
+      min-width: 100px;
+      margin-right: 10px;
+    }
+    
+    .value {
+      font-size: 16px;
+      color: #333;
+      flex: 1;
+      word-break: break-word;
+    }
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px 0;
+  color: #999;
+  font-size: 16px;
+}
+
+
+
+/* 详细信息模态框样式 */
+.detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  .modal-content {
+    width: 92%;
+    max-height: 85vh;
+    overflow-y: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch; /* 增强 iOS 滚动体验 */
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    
+    .modal-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .close-btn {
+      font-size: 22px;
+      color: #999;
+      height: 36px;
+      width: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      &:active {
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  .modal-body {
+    .detail-item {
+      display: flex;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      
+      .detail-label {
+        font-size: 16px;
+        color: #666;
+        min-width: 100px;
+        margin-right: 10px;
+      }
+      
+      .detail-value {
+        font-size: 16px;
+        color: #333;
+        flex: 1;
+        word-break: break-word;
+      }
+    }
+    
+    .admin-detail-item {
+      border-bottom: 1px solid #f0f0f0;
+      padding-bottom: 8px;
+    }
+  }
+}

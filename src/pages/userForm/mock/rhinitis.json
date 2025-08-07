@@ -1,0 +1,223 @@
+{
+    "questions": {
+        "1": {
+            "title": "是否有1年以上屋尘螨或粉尘螨过敏？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "isHDMA"
+        },
+        "2": {
+            "title": "请上传1年以上屋尘螨或粉尘螨阳性检查报告",
+            "options": [
+                { "label": "有", "value": "是" },
+                { "label": "跳过", "value": "否" }
+            ],
+            "field": "hasHDMAReport"
+        },
+        "3": {
+            "title": "是否对屋尘螨或粉尘螨之外的过敏原过敏",
+            "options": [
+                { "label": "花粉", "value": "花粉" },
+                { "label": "猫皮屑", "value": "猫皮屑"},
+                { "label": "狗皮屑", "value": "狗皮屑"},
+                { "label": "其他过敏原", "value": "其他过敏原" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "isOtherAllergy",
+            "multiple": true
+        },
+        "4": {
+            "title": "是否仅偶尔暴露于有猫或狗的环境",
+            "options": [
+                { "label": "仅偶尔接触", "value": "仅偶尔接触" },
+                { "label": "否", "value": "否" }
+            ],
+            "depend": "isOtherAllergy",
+            "precondition": ["猫皮屑", "狗皮屑"],
+            "field": "conditionCatOrDogAppear"
+        },
+        "5": {
+            "title": "是否年龄在12-65岁之间",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "isAgeRange"
+        },
+        "6": {
+            "title": "性别",
+            "options": [
+                { "label": "男", "value": "男" },
+                { "label": "女", "value": "女" }
+            ],
+            "field": "sex"
+        },
+        "7": {
+            "title": "当前是否处于怀孕或哺乳期",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "depend": "sex",
+            "precondition": "女",
+            "field": "conditionFemalePregnant"
+        },
+        "8": {
+            "title": "因设计需要，试验期间需满足以下条件，是否可以接受?\n a. 有生育能力女性需保持避孕\n b. 不可进行鼻腔手术\n c. 不可出现搬家等导致生活环境出现明显变化的情况\n d. 不可开始使用防螨床上用品或类似装备",
+            "options": [
+                { "label": "可以接受", "value": "可以接受" },
+                { "label": "不接受", "value": "不接受" }
+            ],
+            "depend": "sex",
+            "precondition": "女",
+            "field": "conditionFemaleOther"
+        },
+        "9": {
+            "title": "因设计需要，试验期间需满足以下条件，是否可以接受？\na. 不可进行鼻腔手术\nb. 不可出现搬家等导致生活环境出现明显变化的情况\nc. 不可开始使用防螨床上用品或类似装备",
+            "options": [
+                { "label": "可以接受", "value": "可以接受" },
+                { "label": "不接受", "value": "不接受" }
+            ],
+            "depend": "sex",
+            "precondition": "男",
+            "field": "limitDuring"
+        },
+        "10": {
+            "title": "您是否符合以下情况：\na. 不是研究者直系亲属\nb. 当前以及30天内没有参加过其他研究",
+            "options": [
+                { "label": "符合", "value": "符合" },
+                { "label": "不符合", "value": "不符合" }
+            ],
+            "field": "selfRelationship"
+        },
+        "11": {
+            "title": "在正式开始用药前，需进行以下检查，且结果符合标准方可入组：\na. 屋尘螨/粉尘螨皮肤点刺\nb. App电子日志评估过敏情况\nc. 14项过敏原IgE检测\nd. 肺功能检测（若有哮喘）",
+            "options": [
+                { "label": "同意检查", "value": "同意检查" },
+                { "label": "拒绝检查", "value": "拒绝检查" }
+            ],
+            "field": "agreeCheckUp"
+        },
+        "12": {
+            "title": "是否确认无以下疾病",
+            "options": [
+                { "label": "不受控的哮喘", "value": "不受控的哮喘" },
+                { "label": "除哮喘外其他肺病", "value": "除哮喘外其他肺病" },
+                { "label": "心脏病", "value": "心脏病" },
+                { "label": "除心脏病外其他心血管疾病", "value": "除心脏病外其他心血管疾病" },
+                { "label": "高血压", "value": "高血压" },
+                { "label": "甲亢", "value": "甲亢" },
+                { "label": "肿瘤", "value": "肿瘤" },
+                { "label": "艾滋病", "value": "艾滋病" },
+                { "label": "除鼻炎/鼻结膜炎外的鼻部疾病", "value": "除鼻炎/鼻结膜炎外的鼻部疾病" },
+                { "label": "严重口腔疾病", "value": "严重口腔疾病" },
+                { "label": "精神疾病", "value": "精神疾病" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "hasIllness",
+            "multiple": true
+        },
+        "13": {
+            "title": "是否有任何慢性感染",
+            "options": [
+                { "label": "HIV", "value": "HIV" },
+                { "label": "乙肝", "value": "乙肝" },
+                { "label": "梅毒", "value": "梅毒" },
+                { "label": "真菌", "value": "真菌" },
+                { "label": "寄生虫", "value": "寄生虫" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "hasInfection",
+            "multiple": true
+        },
+        "14": {
+            "title": "是否有以下严重不良反应史",
+            "options": [
+                { "label": "食物严重不良反应", "value": "食物严重不良反应" },
+                { "label": "蜜蜂、黄蜂等叮咬后严重不良反应", "value": "蜜蜂、黄蜂等叮咬后严重不良反应" },
+                { "label": "药物严重不良反应", "value": "药物严重不良反应" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "hasAdverseReaction",
+            "multiple": true
+        },
+        "15": {
+            "title": "是否有以下相对罕见的身体状况",
+            "options": [
+                { "label": "有自身免疫病（如红斑狼疮、桥本甲状腺炎）", "value": "是有自身免疫病（如红斑狼疮、桥本甲状腺炎）" },
+                { "label": "免疫力严重低下（如器官移植后，长期使用免疫抑制剂等）", "value": "免疫力严重低下（如器官移植后，长期使用免疫抑制剂等）" },
+                { "label": "有遗传性血管性水肿疾病", "value": "有遗传性血管性水肿疾病" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "hasRareDiseases",
+            "multiple": true
+        },
+        "16": {
+            "title": "是否因鼻炎或普通感冒外的其他情况需要使用抗组胺药或皮质类固醇？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "corticosteroidsUsed" 
+        },
+        "17": {
+            "title": "2年内是否有过以下情况？",
+            "options": [
+                { "label": "慢性荨麻疹", "value": "慢性荨麻疹" },
+                { "label": "严重速发过敏反应（如过敏性休克）", "value": "严重速发过敏反应（如过敏性休克）" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "twoYears",
+            "multiple": true
+        },
+        "18": {
+            "title": "3个月内是否使用过以下药物",
+            "options": [
+                { "label": "糖皮质激素（如甲强龙）", "value": "糖皮质激素（如甲强龙）" },
+                { "label": "任何生物制剂药物（例如单抗）", "value": "任何生物制剂药物（例如单抗）" },
+                { "label": "任何免疫抑制剂", "value": "任何免疫抑制剂" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "threeMonths",
+            "multiple": true
+        },
+        "19": {
+            "title": "4周内是否有以下情况",
+            "options": [
+                { "label": "呼吸道感染", "value": "呼吸道感染" },
+                { "label": "哮喘急性发作且病情不稳定", "value": "哮喘急性发作且病情不稳定" },
+                 { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "fourWeeks",
+            "multiple": true
+        },
+        "20": {
+            "title": "2周内是否使用过酮替芬",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "twoWeeks"
+        },
+        "21": {
+            "title": "是否接受过以下治疗",
+            "options": [
+                { "label": "任何脱敏治疗（指通过定期接触微量过敏原脱敏）", "value": "任何脱敏治疗（指通过定期接触微量过敏原脱敏）" },
+                { "label": "进行鼻腔手术", "value": "进行鼻腔手术" },
+                { "label": "以上均没有", "value": "以上均没有" }
+            ],
+            "field": "acceptTreatment",
+            "multiple": true
+        },
+        "22": {
+            "title": "参加研究时不可同时使用以下药物，是否可行？\na. β受体阻滞剂（如美托洛尔、比索洛尔、普萘洛尔）\nb. 血管紧张素转化酶（ACE）抑制剂（如依那普利、雷米普利、卡托普利）",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "forbiddenDrugs"
+        }
+    }
+}

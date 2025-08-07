@@ -1,0 +1,219 @@
+{
+  "questions": {
+    "1": {
+      "title": "是否已满18岁？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" }
+      ],
+      "field": "isAdult"
+    },
+    "2": {
+      "title": "是否当前已入组到其他药物或器械研究中，或1周内使用了其他药物研究或器械研究的治疗？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" }
+      ],
+      "field": "inOtherStudy"
+    },
+    "3": {
+      "title": "若您是女性，是否处于妊娠或哺乳状态？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" },
+        { "label": "我是男性", "value": "我是男性" }
+      ],
+      "field": "pregnancyStatus"
+    },
+    "4": {
+      "title": "当前的体力状态如何？",
+      "options": [
+        { "label": "活动能力完全正常，与起病前活动能力无任何差异。", "value": "活动能力完全正常，与起病前活动能力无任何差异。" },
+        { "label": "能自由走动及从事轻体力活动，包括一般家务或办公室工作，但不能从事较重的体力活动。", "value": "能自由走动及从事轻体力活动，包括一般家务或办公室工作，但不能从事较重的体力活动。" },
+        { "label": "能自由走动及生活自理，但已丧失工作能力，日间不少于一半时间可以起床活动。", "value": "能自由走动及生活自理，但已丧失工作能力，日间不少于一半时间可以起床活动。" },
+        { "label": "生活仅能部分自理，日间一半以上时间卧床或坐轮椅。", "value": "生活仅能部分自理，日间一半以上时间卧床或坐轮椅。" },
+        { "label": "卧床不起，生活不能自理。", "value": "卧床不起，生活不能自理。" }
+      ],
+      "field": "physicalStatus"
+    },
+    "5": {
+      "title": "是否针对肺部肿瘤进行过治疗？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" },
+        { "label": "我患有其他肿瘤", "value": "我患有其他肿瘤" },
+        { "label": "我未患有肿瘤", "value": "我未患有肿瘤" }
+      ],
+      "field": "lungCancerTreatment"
+    },
+    "6": {
+      "title": "确诊了哪种肺部肿瘤？",
+      "options": [
+        { "label": "小细胞肺（SCLC）", "value": "小细胞肺（SCLC）" },
+        { "label": "非小细胞肺癌（NSCLC）", "value": "非小细胞肺癌（NSCLC）" },
+        { "label": "其他", "value": "其他" }
+      ],
+      "field": "lungCancerType"
+    },
+    "7": {
+      "title": "是否明确当前的肿瘤分期",
+      "options": [
+        { "label": "I-II期", "value": "I-II期" },
+        { "label": "IIIA期", "value": "IIIA期" },
+        { "label": "IIIB或IIIC期", "value": "IIIB或IIIC期" },
+        { "label": "IV期", "value": "IV期" },
+        { "label": "不确定", "value": "不确定" }
+      ],
+      "field": "cancerStage"
+    },
+    "8": {
+      "title": "是否对肿瘤进行过全身性质的治疗？",
+      "options": [
+        { "label": "进行过化疗", "value": "进行过化疗" },
+        { "label": "进行过全身放疗", "value": "进行过全身放疗" },
+        { "label": "进行过靶向药治疗", "value": "进行过靶向药治疗" },
+        { "label": "进行过其他全身性的治疗", "value": "进行过其他全身性的治疗" },
+        { "label": "没有", "value": "没有" }
+      ],
+      "field": "systemicTreatment"
+    },
+    "9": {
+      "title": "是否已确认EGFR基因突变？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "已确认无EGFR基因突变", "value": "已确认无EGFR基因突变" },
+        { "label": "未做检查，不确定是否有EGFR基因突变", "value": "未做检查，不确定是否有EGFR基因突变" }
+      ],
+      "field": "egfrStatus"
+    },
+    "10": {
+      "title": "是否确认有以下突变位点：",
+      "options": [
+        { "label": "Ex20ins", "value": "Ex20ins" },
+        { "label": "Exon19del", "value": "Exon19del" },
+        { "label": "L858R", "value": "L858R" },
+        { "label": "T790M", "value": "T790M" },
+        { "label": "G719X", "value": "G719X" },
+        { "label": "S768I", "value": "S768I" },
+        { "label": "L861Q", "value": "L861Q" },
+        { "label": "没有以上突变位点", "value": "没有以上突变位点" }
+      ],
+      "field": "egfrMutation"
+    },
+    "11": {
+      "title": "是否使用过以下EGFR TKI药物：",
+      "options": [
+        { "label": "PLB1004", "value": "PLB1004" },
+        { "label": "波奇替尼", "value": "波奇替尼" },
+        { "label": "Mobocertinib", "value": "Mobocertinib" },
+        { "label": "CLN-081", "value": "CLN-081" },
+        { "label": "BDTX-189", "value": "BDTX-189" },
+        { "label": "YK-029A", "value": "YK-029A" },
+        { "label": "舒沃替尼", "value": "舒沃替尼" },
+        { "label": "伏美替尼", "value": "伏美替尼" },
+        { "label": "其他针对EGFR Ex20ins的TKI药物", "value": "其他针对EGFR Ex20ins的TKI药物" },
+        { "label": "没有", "value": "没有" }
+      ],
+      "field": "egfrTKIDrugs"
+    },
+    "12": {
+      "title": "3周内是否有以下经历：",
+      "options": [
+        { "label": "接受重大手术", "value": "接受重大手术" },
+        { "label": "接受针对肺野和全脑的放疗", "value": "接受针对肺野和全脑的放疗" },
+        { "label": "接种活疫苗", "value": "接种活疫苗" },
+        { "label": "没有", "value": "没有" }
+      ],
+      "field": "recentSurgery"
+    },
+    "13": {
+      "title": "1周内是否有以下经历：",
+      "options": [
+        { "label": "使用免疫抑制药物", "value": "使用免疫抑制药物" },
+        { "label": "接受肺部和脑部之外的放疗", "value": "接受肺部和脑部之外的放疗" },
+        { "label": "使用具有明确抗肿瘤适应症的中成药", "value": "使用具有明确抗肿瘤适应症的中成药" },
+        { "label": "使用二甲双胍", "value": "使用二甲双胍" },
+        { "label": "使用CYP3A4强抑制剂或强诱导剂", "value": "使用CYP3A4强抑制剂或强诱导剂" },
+        { "label": "接受胸腔镜活检", "value": "接受胸腔镜活检" },
+        { "label": "接受纵隔镜活检", "value": "接受纵隔镜活检" },
+        { "label": "没有", "value": "没有" }
+      ],
+      "field": "recentMedication"
+    },
+    "14": {
+      "title": "是否有以下肺部问题？",
+      "options": [
+        { "label": "曾患有间质性肺病", "value": "曾患有间质性肺病" },
+        { "label": "曾患有药物性间质性肺病", "value": "曾患有药物性间质性肺病" },
+        { "label": "当前患有任何肺间质病变", "value": "当前患有任何肺间质病变" },
+        { "label": "没有以上情况", "value": "没有以上情况" }
+      ],
+      "field": "lungProblems"
+    },
+    "15": {
+      "title": "是否曾经患有需要激素治疗的放射性肺炎？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "曾患者放射性肺炎，但无需激素治疗", "value": "曾患者放射性肺炎，但无需激素治疗" },
+        { "label": "否", "value": "否" }
+      ],
+      "field": "radiationPneumonitis"
+    },
+    "16": {
+      "title": "是否有严重的心脏疾病？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" }
+      ],
+      "field": "heartDisease"
+    },
+    "17": {
+      "title": "若有患有高血压，是否在经治疗后，收缩压仍然>160 mmHg或者舒张压>100 mmHg？",
+      "options": [
+        { "label": "是", "value": "是" },
+        { "label": "否", "value": "否" },
+        { "label": "我未患有高血压", "value": "我未患有高血压" }
+      ],
+      "field": "hypertension"
+    },
+    "18": {
+      "title": "是否存在脑部或脊髓转移？",
+      "options": [
+        { "label": "存在脑部转移", "value": "存在脑部转移" },
+        { "label": "存在脊髓转移", "value": "存在脊髓转移" },
+        { "label": "没有", "value": "没有" }
+      ],
+      "field": "metastasis"
+    },
+    "19": {
+      "title": "当前是否患有以下疾病？",
+      "options": [
+        { "label": "角膜炎或溃疡性角膜炎", "value": "角膜炎或溃疡性角膜炎" },
+        { "label": "凝血功能障碍或出血倾向", "value": "凝血功能障碍或出血倾向" },
+        { "label": "任何全身感染，包括细菌、病毒、真菌感染", "value": "任何全身感染，包括细菌、病毒、真菌感染" },
+        { "label": "没有以上情况", "value": "没有以上情况" }
+      ],
+      "field": "currentDiseases"
+    },
+    "20": {
+      "title": "是否存在以下病史？",
+      "options": [
+        { "label": "药物过敏史", "value": "药物过敏史" },
+        { "label": "自身免疫性疾病史", "value": "自身免疫性疾病史" },
+        { "label": "没有以上情况", "value": "没有以上情况" }
+      ],
+      "field": "medicalHistory"
+    },
+    "21": {
+      "title": "是否存在以下可能影响药物吸收的情况？",
+      "options": [
+        { "label": "吞咽困难", "value": "吞咽困难" },
+        { "label": "较严重的消化系统疾病", "value": "较严重的消化系统疾病" },
+        { "label": "接受过重大消化道手术", "value": "接受过重大消化道手术" },
+        { "label": "有可能影响药物吸收的其他情况", "value": "有可能影响药物吸收的其他情况" },
+        { "label": "没有以上情况", "value": "没有以上情况" }
+      ],
+      "field": "absorptionIssues"
+    }
+  }
+}

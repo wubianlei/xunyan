@@ -1,0 +1,12 @@
+// Custom implementation to override the deprecated functions
+// This file should be imported before any taro-ui imports
+
+// Ensure we're using the new module system
+@use "sass:color";
+
+// Replace the deprecated tint() function
+@function tint($color, $percentage) {
+  @return color.mix(#FFF, $color, $percentage);
+}
+
+// Add any other deprecated function overrides as needed

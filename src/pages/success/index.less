@@ -1,0 +1,320 @@
+// 定义全局变量，统一样式
+@success-green: #07c160;
+@primary-blue: #1890ff;
+@text-dark: #333;
+@text-medium: #666;
+@text-light: #999;
+@background-white: #fff;
+@background-light: #f9f9f9;
+@background-lighter: #f0f0f0;
+@border-radius-lg: 8px;
+@border-radius-md: 6px;
+@shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+@shadow-inner: 0 1px 4px rgba(0, 0, 0, 0.05);
+@spacing-xxs: 1vw;
+@spacing-xs: 2vw;
+@spacing-sm: 3vw;
+@spacing-md: 4vw;
+@spacing-lg: 5vw;
+@font-size-xxl: clamp(32px, 8vw, 40px);
+@font-size-xl: clamp(24px, 6vw, 28px);
+@font-size-lg: clamp(22px, 5.5vw, 26px);
+@font-size-md: clamp(20px, 5vw, 24px);
+
+// 底部菜单占位符，确保内容不被遮挡
+.tabbar-placeholder {
+  height: 50PX;
+  width: 100%;
+}
+
+.success-page {
+  padding: @spacing-md;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  
+  &.loading,
+  &.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+
+    .error-message {
+      color: #ff4d4f;
+      font-size: @font-size-xl;
+      margin-bottom: @spacing-lg;
+    }
+
+    .retry-button {
+      background-color: @primary-blue;
+      color: white;
+      padding: @spacing-sm @spacing-md + @spacing-xs;
+      border-radius: @border-radius-md;
+      font-size: @font-size-lg;
+      margin-top: @spacing-md;
+
+      &:active {
+        background-color: #096dd9;
+      }
+    }
+  }
+
+  .success-header {
+    text-align: center;
+    margin-bottom: @spacing-md;
+    padding: @spacing-xs 0;
+    background-color: @background-white;
+    border-radius: @border-radius-lg;
+    box-shadow: @shadow-card;
+    margin-bottom: @spacing-md;
+    padding: @spacing-md;
+
+    .success-title {
+      display: block;
+      font-size: @font-size-xxl;
+      color: @success-green;
+      margin-bottom: @spacing-xs;
+      font-weight: bold;
+    }
+
+    .success-subtitle {
+      font-size: @font-size-lg;
+      color: @text-medium;
+    }
+  }
+
+  // 通用卡片样式
+  .standard-card {
+    background-color: @background-white;
+    border-radius: @border-radius-lg;
+    margin-bottom: @spacing-md;
+    padding: @spacing-md;
+    box-shadow: @shadow-card;
+  }
+
+  // 研究匹配结果样式
+  .match-results-section {
+    &:extend(.standard-card);
+
+    .no-matches {
+      text-align: center;
+      padding: @spacing-lg 0;
+      color: @text-light;
+      font-size: @font-size-xl;
+    }
+
+    .research-matches {
+      .total-match-score {
+        padding: @spacing-xs 0 @spacing-md;
+
+        .score-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: @spacing-xs;
+
+          .score-title {
+            font-size: @font-size-xl;
+            font-weight: bold;
+            color: @text-dark;
+          }
+
+          .score-value {
+            font-size: @font-size-xl;
+            font-weight: bold;
+            color: @primary-blue;
+          }
+        }
+      }
+
+      .match-item {
+        margin-top: @spacing-lg;
+        padding: @spacing-sm;
+        border-radius: @border-radius-lg;
+        background-color: @background-light;
+        box-shadow: @shadow-inner;
+
+        .match-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: @spacing-xs;
+
+          .match-name {
+            font-size: @font-size-lg;
+            font-weight: bold;
+            color: @text-dark;
+          }
+
+          .match-score {
+            font-size: @font-size-lg;
+            font-weight: bold;
+          }
+        }
+
+        .match-description {
+          display: block;
+          margin: @spacing-sm 0;
+          font-size: @font-size-md;
+          color: @text-medium;
+          line-height: 1.5;
+        }
+
+        .match-requirements {
+          background-color: @background-lighter;
+          padding: @spacing-sm;
+          border-radius: @border-radius-md;
+          margin-top: @spacing-xs;
+
+          .requirements-title {
+            display: block;
+            font-weight: bold;
+            font-size: @font-size-md;
+            color: @text-dark;
+            margin-bottom: @spacing-xs;
+          }
+
+          .requirement-item {
+            display: block;
+            font-size: @font-size-md;
+            color: @text-medium;
+            margin: @spacing-xxs + 0.5vw 0;
+            padding-left: @spacing-xxs;
+          }
+        }
+      }
+    }
+  }
+
+  // 下一步指导样式
+  .next-steps {
+    &:extend(.standard-card);
+
+    .steps-content {
+      padding: @spacing-xs 0;
+
+      .steps-title {
+        display: block;
+        font-size: @font-size-xl;
+        font-weight: bold;
+        color: @text-dark;
+        margin-bottom: @spacing-sm;
+      }
+
+      .steps-description {
+        display: block;
+        font-size: @font-size-md;
+        color: @text-medium;
+        line-height: 1.5;
+        margin-bottom: @spacing-md;
+      }
+
+      .steps-list {
+        background-color: @background-light;
+        padding: @spacing-sm;
+        border-radius: @border-radius-md;
+        margin-bottom: @spacing-md;
+
+        .steps-list-title {
+          display: block;
+          font-weight: bold;
+          font-size: @font-size-lg;
+          color: @text-dark;
+          margin-bottom: @spacing-xs;
+        }
+
+        .steps-list-item {
+          display: block;
+          font-size: @font-size-md;
+          color: @text-medium;
+          margin: @spacing-xs 0;
+          line-height: 1.4;
+        }
+      }
+
+      .contact-button {
+        width: 100%;
+        font-size: @font-size-lg;
+        height: auto;
+        padding: @spacing-xs 0;
+        border-radius: @border-radius-md;
+        margin-top: @spacing-xs;
+        background-color: @success-green;
+        
+        &:active {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  // 表单数据样式
+  .form-data {
+    margin-top: @spacing-md;
+    
+    .at-divider {
+      margin: @spacing-sm 0 @spacing-md;
+      
+      .at-divider__content {
+        background-color: #f5f5f5;
+        font-size: @font-size-lg;
+        color: @text-dark;
+        font-weight: bold;
+        padding: 0 @spacing-xs;
+      }
+    }
+    
+    .at-card {
+      margin-bottom: @spacing-md;
+      border-radius: @border-radius-lg;
+      overflow: hidden;
+      box-shadow: @shadow-card;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .at-card__header {
+        font-size: @font-size-lg;
+        font-weight: bold;
+        color: @text-dark;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .at-card__content {
+        padding: @spacing-sm @spacing-md;
+      }
+    }
+
+    .info-item {
+      margin: @spacing-sm 0;
+      display: flex;
+      align-items: flex-start;
+      border-bottom: 1px solid #f5f5f5;
+      padding-bottom: @spacing-sm;
+      
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      
+      .label {
+        color: @text-medium;
+        margin-right: @spacing-sm;
+        min-width: 120px;
+        flex-shrink: 0;
+        font-size: @font-size-lg;
+      }
+
+      .value {
+        color: @text-dark;
+        flex: 1;
+        word-break: break-all;
+        font-size: @font-size-lg;
+      }
+    }
+  }
+}

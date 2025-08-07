@@ -1,0 +1,4 @@
+// Custom implementation of the deprecated tint() function
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}

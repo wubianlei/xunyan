@@ -1,0 +1,252 @@
+.index-page {
+  padding: 5vw 4vw;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0f7ff 0%, #f5f5f5 100%);
+  box-sizing: border-box;
+  position: relative;
+
+  .header {
+    text-align: center;
+    margin-bottom: 6vw;
+    padding: 0 3vw;
+    
+    .logo-container {
+      margin-bottom: 3vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+      .logo-icon {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(24, 144, 255, 0.15);
+      }
+    }
+
+    .title {
+      display: block;
+      font-size: clamp(30px, 8vw, 40px);
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 2vw;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      font-size: clamp(22px, 5.5vw, 28px);
+      color: #666;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 90%;
+    }
+  }
+
+  .notice-card {
+    margin: 0 1vw 6vw;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    :global(.at-card) {
+      margin: 0;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    :global(.at-card__header) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      padding-bottom: 10px;
+      font-size: clamp(24px, 6vw, 30px);
+    }
+
+    :global(.at-card__content) {
+      padding: 12px 16px;
+    }
+
+    .notice-content {
+      padding: 2vw 0 1vw;
+
+      .notice-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 3vw;
+        line-height: 1.5;
+        font-size: clamp(22px, 5.5vw, 26px);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .at-icon {
+          margin-right: 2vw;
+          margin-top: 0.3vw;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .action-section {
+    padding: 0 2vw;
+    margin-top: 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .start-button {
+      width: 100%;
+      height: auto;
+      padding: 16px 0;
+      line-height: 1.5;
+      font-size: clamp(26px, 6.5vw, 32px);
+      border-radius: 24px;
+      box-shadow: 0 6px 16px rgba(24, 144, 255, 0.2);
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 8px rgba(24, 144, 255, 0.15);
+      }
+      
+      .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .at-icon {
+        margin-left: 12px;
+        font-size: 26px;
+      }
+    }
+
+    .action-hint {
+      margin-top: 2vw;
+      font-size: clamp(20px, 5vw, 24px);
+      color: #666;
+      opacity: 0.8;
+    }
+
+    .history-link {
+      margin-top: 8vw;
+      width: 100%;
+      max-width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3vw;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: 1px solid #e8e8e8;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+      &:active {
+        background-color: #fafafa;
+        transform: translateY(1px);
+      }
+
+      .at-icon {
+        margin-right: 2vw;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .link-text {
+        color: #666;
+        font-size: clamp(22px, 5.5vw, 26px);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        letter-spacing: 0.5px;
+      }
+    }
+  }
+
+  /* 添加媒体查询，针对不同尺寸设备优化 */
+  @media screen and (max-width: 320px) {
+    padding: 4vw 3vw;
+    
+    .header {
+      margin-bottom: 5vw;
+      
+      .title {
+        font-size: 26px;
+      }
+      
+      .subtitle {
+        font-size: 22px;
+      }
+    }
+    
+    .notice-card {
+      margin-bottom: 5vw;
+    }
+    
+    .action-section {
+      .start-button {
+        padding: 14px 0;
+        font-size: 24px;
+      }
+    }
+  }
+  
+  .footer {
+    margin-top: 10vw;
+    text-align: center;
+    padding: 3vw 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .tabbar-placeholder {
+    height: 120px;
+    width: 100%;
+  }
+  
+  .footer-text {
+    font-size: clamp(18px, 4.5vw, 22px);
+    color: #999;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 4vh 15vw;
+    
+    .header {
+      .title {
+        font-size: 36px;
+      }
+      
+      .subtitle {
+        font-size: 24px;
+        max-width: 60%;
+      }
+      
+      .logo-container {
+        margin-bottom: 4vh;
+        
+        .logo-icon {
+          font-size: 32px;
+          padding: 15px;
+        }
+      }
+    }
+    
+    .action-section {
+      max-width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      
+      .history-link {
+        max-width: 60%;
+      }
+    }
+    
+    .footer {
+      margin-top: 8vh;
+    }
+  }
+}

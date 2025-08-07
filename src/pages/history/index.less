@@ -1,0 +1,240 @@
+// 底部菜单占位符，确保内容不被遮挡
+.tabbar-placeholder {
+  height: 50PX;
+  width: 100%;
+}
+
+.history-container {
+  padding: 5vw 4vw;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  box-sizing: border-box;
+
+  .history-title {
+    font-size: clamp(32px, 8vw, 40px);
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 3vw;
+    text-align: center;
+  }
+
+  .history-count {
+    text-align: center;
+    color: #666;
+    margin-bottom: 4vw;
+    font-size: clamp(22px, 5.5vw, 26px);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 8vw 4vw;
+    color: #666;
+    background: #fff;
+    border-radius: 8px;
+    margin-top: 4vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: clamp(24px, 6vw, 28px);
+  }
+
+  .history-card {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 4vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    .card-header {
+      padding: 4vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+
+      .submission-time {
+        .time-label {
+          color: #666;
+          margin-right: 2vw;
+          font-size: clamp(22px, 5.5vw, 26px);
+        }
+        .time-value {
+          color: #333;
+          font-weight: 500;
+          font-size: clamp(22px, 5.5vw, 26px);
+        }
+      }
+
+      .card-actions {
+        display: flex;
+        gap: 3vw;
+
+        .action-button {
+          padding: 2vw 4vw;
+          border-radius: 6px;
+          font-size: clamp(20px, 5vw, 24px);
+          cursor: pointer;
+
+          &:not(.delete) {
+            color: #1890ff;
+            background-color: #e6f7ff;
+
+            &:active {
+              background-color: #bae7ff;
+            }
+          }
+
+          &.delete {
+            color: #ff4d4f;
+            background-color: #fff1f0;
+
+            &:active {
+              background-color: #ffa39e;
+            }
+          }
+        }
+      }
+    }
+
+    .card-content {
+      padding: 4vw;
+      
+      .card-actions {
+        display: flex;
+        gap: 3vw;
+        margin-top: 3vw;
+        
+        .action-button {
+          padding: 2vw 4vw;
+          border-radius: 6px;
+          font-size: clamp(20px, 5vw, 24px);
+          cursor: pointer;
+          color: #1890ff;
+          background-color: #e6f7ff;
+          
+          &:active {
+            background-color: #bae7ff;
+          }
+        }
+      }
+
+      .content-section {
+        margin-bottom: 5vw;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        .section-title {
+          font-size: clamp(24px, 6vw, 28px);
+          font-weight: bold;
+          color: #666;
+          margin-bottom: 3vw;
+          padding-bottom: 2vw;
+          border-bottom: 1px solid #eee;
+        }
+
+        .info-item {
+          display: flex;
+          margin-bottom: 2.5vw;
+          line-height: 1.5;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .label {
+            color: #666;
+            min-width: 120px;
+            flex-shrink: 0;
+            font-size: clamp(22px, 5.5vw, 26px);
+          }
+
+          .value {
+            color: #333;
+            flex: 1;
+            font-size: clamp(22px, 5.5vw, 26px);
+          }
+        }
+      }
+    }
+  }
+
+  // 详细信息弹窗样式
+  .detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+      width: 90%;
+      max-height: 80%;
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      .modal-header {
+        padding: 4vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+
+        .modal-title {
+          font-size: clamp(24px, 6vw, 28px);
+          font-weight: bold;
+          color: #333;
+        }
+
+        .close-btn {
+          font-size: clamp(30px, 7.5vw, 36px);
+          color: #999;
+          cursor: pointer;
+          padding: 0 2vw;
+
+          &:active {
+            color: #666;
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 4vw;
+        overflow-y: auto;
+        flex: 1;
+
+        .detail-item {
+          margin-bottom: 3vw;
+          padding-bottom: 2vw;
+          border-bottom: 1px solid #f0f0f0;
+
+          &:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+          }
+
+          .detail-label {
+            display: block;
+            font-size: clamp(22px, 5.5vw, 26px);
+            color: #666;
+            margin-bottom: 1vw;
+          }
+
+          .detail-value {
+            display: block;
+            font-size: clamp(20px, 5vw, 24px);
+            color: #333;
+            word-break: break-word;
+          }
+        }
+      }
+    }
+  }
+}

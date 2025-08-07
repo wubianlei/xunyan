@@ -1,0 +1,196 @@
+.profile-page {
+  padding: 0 0 120px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.header {
+  background: linear-gradient(135deg, #2980b9 0%, #1890ff 100%);
+  height: 240px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: white;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.avatar-container {
+  margin-bottom: 2px;
+  border: 4px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.username {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 0.5px;
+}
+
+.info-section {
+  margin: 20px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+  }
+}
+
+.section-title {
+  padding: 15px 20px;
+  font-size: 15rpx;
+  color: #262626;
+  font-weight: 600;
+  display: block;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #fafbfc;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    height: 16px;
+    width: 4px;
+    background: #1890ff;
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+.footer {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.02));
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #999;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tabbar-placeholder {
+  height: 60px;
+}
+
+/* 自定义样式覆盖 Taro UI 组件 */
+:global {
+  .at-list__item {
+    padding: 12px 16px !important;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: #f5f9ff !important;
+    }
+    
+    .item-content__info-title {
+      font-size: 14px !important;
+      color: #333 !important;
+    }
+    
+    .item-extra__info {
+      font-size: 14px !important;
+      color: #666 !important;
+    }
+    
+    .at-icon {
+      font-size: 16px !important;
+    }
+  }
+}
+
+/* 用户标签样式 */
+.user-tags {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* 统计部分样式 */
+.stats-section {
+  display: flex;
+  margin: -10px 20px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 0 6px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  .stat-value {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #1890ff;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .stat-label {
+    font-size: 24rpx;
+    color: #666;
+  }
+}
+
+.settings-section {
+  margin-bottom: 30px;
+}
+
+.footer-version {
+  display: block;
+  font-size: 12px;
+  color: #bbb;
+  margin-top: 5px;
+}
