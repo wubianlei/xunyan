@@ -7,7 +7,7 @@ import { formDataService } from '../../services/formDataService'
 import type { UserFormData } from '../../models/userForm'
 import TabBar from '../../components/TabBar'
 // import questionsData from './questions.json'
-import questionsData from './mock/rhinitis1.json'
+import questionsData from './mock/rhinitis.json'
 import './index.less'
 
 // import "taro-ui/dist/style/components/form.scss"
@@ -172,26 +172,41 @@ export default class UserForm extends Component<{}, UserFormState> {
 
   getExitConditions = () => {
     return {
-      dustMiteAllergy: ['否'],
-      additionalAllergens: ['其他过敏原'],
-      occasionalPetExposure: ['否'],
-      eligibleAge: ['否'],
-      pregnancyOrLactation: ['是'],
-      conditionFemaleOther: ['不接受'],
-      limitDuring: ['不接受'],
-      selfRelationship: ['不符合'],
-      agreeCheckUp: ['拒绝检查'],
-      respiratoryCardiovascularConditions: ['不受控的哮喘','除哮喘外其他肺病','心脏病','除心脏病外其他心血管疾病','高血压','甲亢','肿瘤','艾滋病','除鼻炎/鼻结膜炎外的鼻部疾病','严重口腔疾病','精神疾病'],
-      chronicInfections: ['HIV','乙肝','梅毒','真菌','寄生虫'],
-      severeAllergicReactionHistory: ['食物严重不良反应','蜜蜂、黄蜂等叮咬后严重不良反应','药物严重不良反应'],
-      immuneSystemDisorders: ['有自身免疫病（如红斑狼疮、桥本甲状腺炎）','免疫力严重低下（如器官移植后，长期使用免疫抑制剂等）','有遗传性血管性水肿疾病'],
-      corticosteroidsUsed: ['是'],
-      recentSevereAllergicEvents: ['慢性荨麻疹','严重速发过敏反应（如过敏性休克）'],
-      recentImmunosuppressiveMedication: ['糖皮质激素（如甲强龙）','任何生物制剂药物（例如单抗）','任何免疫抑制剂'],
-      recentRespiratoryIssues: ['呼吸道感染','哮喘急性发作且病情不稳定'],
-      recentKetotifenUse: ['是'],
-      acceptTreatment: ['任何脱敏治疗（指通过定期接触微量过敏原脱敏）','进行鼻腔手术'],
-      forbiddenDrugs: ['否'],
+      dustMiteAllergy: '', // 核心 4
+      additionalAllergens: [],
+      occasionalPetExposure: '',
+      persistentSymptomsOnMedication: '',
+      eligibleAge: '', // 其他 3
+      gender: '',
+      pregnancyOrLactation: '',
+      respiratoryCardiovascularConditions: [], // 病史 9 
+      cardiacEndocrineConditions: [],
+      mentalOralOncologyConditions: [],
+      immuneSystemDisorders: [],
+      chronicInfections: [],
+      severeAllergicReactionHistory: [],
+      onlyDustMiteAllergy: '',
+      eosinophilicEsophagitis: '',
+      systemicAllergicReactionHistory: [],
+      antidepressantAntipsychoticUse: '', // 治疗史 1
+      noDesensitizationHistory: '', // 洗脱 11
+      recentImmunosuppressiveMedication: [],
+      recentKetotifenUse: '',
+      recentRespiratoryIssues: [],
+      recentSevereAllergicEvents: [],
+      noNasalSurgeryHistory: '',
+      noDustMiteImmunotherapyHistory: '',
+      recentOralCorticosteroidUse: [],
+      recentLongActingCorticosteroidUse: [],
+      recentAsthmaExacerbation: [],
+      recentBiologicTherapy: [],
+      // 承诺 0
+      // 停用药 5
+      currentBetaBlockerOrACEInhibitorUse: [],
+      currentImmunosuppressantUse: '',
+      currentBiologicTherapy: '',
+      currentAntihistamineOrCorticosteroidUse: '',
+      currentAllergenSpecificImmunotherapy: '',
     }
   }
 

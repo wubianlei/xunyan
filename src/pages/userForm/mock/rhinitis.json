@@ -1,42 +1,43 @@
 {
     "questions": {
         "1": {
-            "title": "是否有1年以上屋尘螨或粉尘螨过敏？",
+            "title": "是否有1年以上屋尘螨或粉尘螨过敏性鼻炎/鼻结膜炎诊断？",
             "options": [
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "field": "isHDMA"
+            "field": "dustMiteAllergy",
+            "research": ["Inmunotek", "ALK"]
         },
         "2": {
-            "title": "请上传1年以上屋尘螨或粉尘螨阳性检查报告",
-            "options": [
-                { "label": "有", "value": "是" },
-                { "label": "跳过", "value": "否" }
-            ],
-            "field": "hasHDMAReport"
-        },
-        "3": {
-            "title": "是否对屋尘螨或粉尘螨之外的过敏原过敏",
+            "title": "是否对屋尘螨或粉尘螨之外的过敏原过敏？",
             "options": [
                 { "label": "花粉", "value": "花粉" },
                 { "label": "猫皮屑", "value": "猫皮屑"},
                 { "label": "狗皮屑", "value": "狗皮屑"},
-                { "label": "其他过敏原", "value": "其他过敏原" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "isOtherAllergy",
+            "field": "additionalAllergens",
+            "research": ["Inmunotek"],
             "multiple": true
         },
-        "4": {
-            "title": "是否仅偶尔暴露于有猫或狗的环境",
+        "3": {
+            "title": "是否仅偶尔暴露于有猫或狗的环境？",
             "options": [
-                { "label": "仅偶尔接触", "value": "仅偶尔接触" },
+                { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "depend": "isOtherAllergy",
-            "precondition": ["猫皮屑", "狗皮屑"],
-            "field": "conditionCatOrDogAppear"
+            "field": "occasionalPetExposure",
+            "research": ["Inmunotek"]
+        },
+        "4": {
+            "title": "过去1年，是否接受了抗过敏药物治疗，但仍有过敏性鼻炎症状？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "persistentSymptomsOnMedication",
+            "research": ["ALK"]
         },
         "5": {
             "title": "是否年龄在12-65岁之间",
@@ -44,7 +45,8 @@
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "field": "isAgeRange"
+            "field": "eligibleAge",
+            "research": ["Inmunotek", "ALK"]
         },
         "6": {
             "title": "性别",
@@ -52,7 +54,8 @@
                 { "label": "男", "value": "男" },
                 { "label": "女", "value": "女" }
             ],
-            "field": "sex"
+            "field": "gender",
+            "research": ["Inmunotek", "ALK"]
         },
         "7": {
             "title": "当前是否处于怀孕或哺乳期",
@@ -60,164 +63,299 @@
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "depend": "sex",
+            "depend": "gender",
             "precondition": "女",
-            "field": "conditionFemalePregnant"
+            "field": "pregnancyOrLactation",
+            "research": ["Inmunotek", "ALK"]
         },
         "8": {
-            "title": "因设计需要，试验期间需满足以下条件，是否可以接受?\n a. 有生育能力女性需保持避孕\n b. 不可进行鼻腔手术\n c. 不可出现搬家等导致生活环境出现明显变化的情况\n d. 不可开始使用防螨床上用品或类似装备",
+            "title": "是否有以下疾病？",
             "options": [
-                { "label": "可以接受", "value": "可以接受" },
-                { "label": "不接受", "value": "不接受" }
-            ],
-            "depend": "sex",
-            "precondition": "女",
-            "field": "conditionFemaleOther"
-        },
-        "9": {
-            "title": "因设计需要，试验期间需满足以下条件，是否可以接受？\na. 不可进行鼻腔手术\nb. 不可出现搬家等导致生活环境出现明显变化的情况\nc. 不可开始使用防螨床上用品或类似装备",
-            "options": [
-                { "label": "可以接受", "value": "可以接受" },
-                { "label": "不接受", "value": "不接受" }
-            ],
-            "depend": "sex",
-            "precondition": "男",
-            "field": "limitDuring"
-        },
-        "10": {
-            "title": "您是否符合以下情况：\na. 不是研究者直系亲属\nb. 当前以及30天内没有参加过其他研究",
-            "options": [
-                { "label": "符合", "value": "符合" },
-                { "label": "不符合", "value": "不符合" }
-            ],
-            "field": "selfRelationship"
-        },
-        "11": {
-            "title": "在正式开始用药前，需进行以下检查，且结果符合标准方可入组：\na. 屋尘螨/粉尘螨皮肤点刺\nb. App电子日志评估过敏情况\nc. 14项过敏原IgE检测\nd. 肺功能检测（若有哮喘）",
-            "options": [
-                { "label": "同意检查", "value": "同意检查" },
-                { "label": "拒绝检查", "value": "拒绝检查" }
-            ],
-            "field": "agreeCheckUp"
-        },
-        "12": {
-            "title": "是否确认无以下疾病",
-            "options": [
-                { "label": "不受控的哮喘", "value": "不受控的哮喘" },
-                { "label": "除哮喘外其他肺病", "value": "除哮喘外其他肺病" },
-                { "label": "心脏病", "value": "心脏病" },
+                { "label": "哮喘", "value": "哮喘" },
+                { "label": "除哮喘外其他慢性肺病（慢阻肺、肺气肿、支气管扩张等）", "value": "除哮喘外其他慢性肺病（慢阻肺、肺气肿、支气管扩张等）" },
+                { "label": "鼻咽部严重疾病（除外鼻炎/鼻结膜炎，除外扁桃体手术史）", "value": "鼻咽部严重疾病（除外鼻炎/鼻结膜炎，除外扁桃体手术史）" },
                 { "label": "除心脏病外其他心血管疾病", "value": "除心脏病外其他心血管疾病" },
-                { "label": "高血压", "value": "高血压" },
-                { "label": "甲亢", "value": "甲亢" },
-                { "label": "肿瘤", "value": "肿瘤" },
-                { "label": "艾滋病", "value": "艾滋病" },
-                { "label": "除鼻炎/鼻结膜炎外的鼻部疾病", "value": "除鼻炎/鼻结膜炎外的鼻部疾病" },
-                { "label": "严重口腔疾病", "value": "严重口腔疾病" },
-                { "label": "精神疾病", "value": "精神疾病" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "艾滋病或HIV感染", "value": "艾滋病或HIV感染" },
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "hasIllness",
+            "field": "respiratoryCardiovascularConditions",
+            "research": ["Inmunotek", "ALK"],
             "multiple": true
         },
-        "13": {
-            "title": "是否有任何慢性感染",
+        "9": {
+            "title": "是否有以下疾病？",
+            "options": [
+                { "label": "心脏病", "value": "心脏病" },
+                { "label": "其他心血管疾病", "value": "其他心血管疾病" },
+                { "label": "高血压", "value": "高血压" },
+                { "label": "甲状腺功能亢进（甲亢）", "value": "甲状腺功能亢进（甲亢）" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "field": "cardiacEndocrineConditions",
+            "research": ["Inmunotek"],
+            "multiple": true
+        },
+        "10": {
+            "title": "是否有以下疾病？",
+            "options": [
+                { "label": "精神疾病", "value": "精神疾病" },
+                { "label": "其他严重疾病（如肿瘤）", "value": "其他严重疾病（如肿瘤）" },
+                { "label": "口腔疾病（如持续性口腔炎症）", "value": "口腔疾病（如持续性口腔炎症）" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "field": "mentalOralOncologyConditions",
+            "research": ["Inmunotek", "ALK"],
+            "multiple": true
+        },
+        "11": {
+            "title": "是否有以下相对罕见的身体状况？",
+            "options": [
+                { "label": "有自身免疫病（如红斑狼疮、桥本甲状腺炎）", "value": "是有自身免疫病（如红斑狼疮、桥本甲状腺炎）" },
+                { "label": "免疫力低下（器官移植后、长期使用免疫抑制剂、免疫缺陷等）", "value": "免疫力低下（器官移植后、长期使用免疫抑制剂、免疫缺陷等）" },
+                { "label": "有遗传性血管性水肿疾病", "value": "有遗传性血管性水肿疾病" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "field": "immuneSystemDisorders",
+            "research": ["Inmunotek", "ALK"],
+            "multiple": true
+        },
+        "12": {
+            "title": "是否有慢性感染情况？",
             "options": [
                 { "label": "HIV", "value": "HIV" },
                 { "label": "乙肝", "value": "乙肝" },
                 { "label": "梅毒", "value": "梅毒" },
-                { "label": "真菌", "value": "真菌" },
-                { "label": "寄生虫", "value": "寄生虫" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "真菌感染", "value": "真菌感染" },
+                { "label": "寄生虫感染", "value": "寄生虫感染" },
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "hasInfection",
+            "field": "chronicInfections",
+            "research": ["Inmunotek"],
             "multiple": true
         },
-        "14": {
-            "title": "是否有以下严重不良反应史",
+        "13": {
+            "title": "是否有以下严重不良反应史？",
             "options": [
                 { "label": "食物严重不良反应", "value": "食物严重不良反应" },
                 { "label": "蜜蜂、黄蜂等叮咬后严重不良反应", "value": "蜜蜂、黄蜂等叮咬后严重不良反应" },
                 { "label": "药物严重不良反应", "value": "药物严重不良反应" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "hasAdverseReaction",
+            "field": "severeAllergicReactionHistory",
+            "research": ["Inmunotek"],
             "multiple": true
         },
-        "15": {
-            "title": "是否有以下相对罕见的身体状况",
-            "options": [
-                { "label": "有自身免疫病（如红斑狼疮、桥本甲状腺炎）", "value": "是有自身免疫病（如红斑狼疮、桥本甲状腺炎）" },
-                { "label": "免疫力严重低下（如器官移植后，长期使用免疫抑制剂等）", "value": "免疫力严重低下（如器官移植后，长期使用免疫抑制剂等）" },
-                { "label": "有遗传性血管性水肿疾病", "value": "有遗传性血管性水肿疾病" },
-                { "label": "以上均没有", "value": "以上均没有" }
-            ],
-            "field": "hasRareDiseases",
-            "multiple": true
-        },
-        "16": {
-            "title": "是否因鼻炎或普通感冒外的其他情况需要使用抗组胺药或皮质类固醇？",
+        "14": {
+            "title": "是否除屋尘螨或粉尘螨外，没有任何其他过敏原导致的鼻炎/鼻结膜炎?",
             "options": [
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "field": "corticosteroidsUsed" 
+            "field": "onlyDustMiteAllergy",
+            "research": ["ALK"]
+        },
+        "15": {
+            "title": "是否有嗜酸细胞性食管炎？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "field": "eosinophilicEsophagitis",
+            "research": ["ALK"]
+        },
+        "16": {
+            "title": "是否有过全身过敏性反应相关病史？",
+            "options": [
+                { "label": "速发严重过敏反应且伴随心肺症状", "value": "速发严重过敏反应且伴随心肺症状" },
+                { "label": "全身性荨麻疹", "value": "全身性荨麻疹" },
+                { "label": "重度面部血管性水肿", "value": "重度面部血管性水肿" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "field": "systemicAllergicReactionHistory",
+            "research": ["ALK"],
+            "multiple": true
         },
         "17": {
-            "title": "2年内是否有过以下情况？",
+            "title": "是否使用过抗抑郁或抗精神病药物？",
             "options": [
-                { "label": "慢性荨麻疹", "value": "慢性荨麻疹" },
-                { "label": "严重速发过敏反应（如过敏性休克）", "value": "严重速发过敏反应（如过敏性休克）" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
             ],
-            "field": "twoYears",
-            "multiple": true
+            "research": ["ALK"],
+            "field": "antidepressantAntipsychoticUse"
         },
         "18": {
-            "title": "3个月内是否使用过以下药物",
+            "title": "是否未接受过任何脱敏治疗？",
             "options": [
-                { "label": "糖皮质激素（如甲强龙）", "value": "糖皮质激素（如甲强龙）" },
-                { "label": "任何生物制剂药物（例如单抗）", "value": "任何生物制剂药物（例如单抗）" },
-                { "label": "任何免疫抑制剂", "value": "任何免疫抑制剂" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
             ],
-            "field": "threeMonths",
-            "multiple": true
+            "research": ["Inmunotek"],
+            "field": "noDesensitizationHistory"
         },
         "19": {
-            "title": "4周内是否有以下情况",
+            "title": "3个月内是否使用过以下药物？",
             "options": [
-                { "label": "呼吸道感染", "value": "呼吸道感染" },
-                { "label": "哮喘急性发作且病情不稳定", "value": "哮喘急性发作且病情不稳定" },
-                 { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "糖皮质激素", "value": "糖皮质激素" },
+                { "label": "任何生物制剂药物（蛋白药物）", "value": "任何生物制剂药物（蛋白药物）" },
+                { "label": "任何免疫抑制剂", "value": "任何免疫抑制剂" },
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "fourWeeks",
+            "research": ["Inmunotek"],
+            "field": "recentImmunosuppressiveMedication",
             "multiple": true
         },
         "20": {
-            "title": "2周内是否使用过酮替芬",
+            "title": "14天内是否使用过酮替芬",
             "options": [
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "field": "twoWeeks"
+            "research": ["Inmunotek"],
+            "field": "recentKetotifenUse"
         },
         "21": {
-            "title": "是否接受过以下治疗",
+            "title": "4周内是否有以下情况？",
             "options": [
-                { "label": "任何脱敏治疗（指通过定期接触微量过敏原脱敏）", "value": "任何脱敏治疗（指通过定期接触微量过敏原脱敏）" },
-                { "label": "进行鼻腔手术", "value": "进行鼻腔手术" },
-                { "label": "以上均没有", "value": "以上均没有" }
+                { "label": "呼吸道感染", "value": "呼吸道感染" },
+                { "label": "哮喘急性发作且病情不稳定", "value": "哮喘急性发作且病情不稳定" },
+                { "label": "没有", "value": "没有" }
             ],
-            "field": "acceptTreatment",
+            "research": ["Inmunotek"],
+            "field": "recentRespiratoryIssues",
             "multiple": true
         },
         "22": {
-            "title": "参加研究时不可同时使用以下药物，是否可行？\na. β受体阻滞剂（如美托洛尔、比索洛尔、普萘洛尔）\nb. 血管紧张素转化酶（ACE）抑制剂（如依那普利、雷米普利、卡托普利）",
+            "title": "2年内是否有过以下情况？",
+            "options": [
+                { "label": "慢性荨麻疹", "value": "慢性荨麻疹" },
+                { "label": "严重急性过敏反应（如过敏性休克）", "value": "严重急性过敏反应（如过敏性休克）" },
+                { "label": "血管性水肿", "value": "血管性水肿" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["Inmunotek", "ALK"],
+            "field": "recentSevereAllergicEvents",
+            "multiple": true
+        },
+        "23": {
+            "title": "是否确认未接受过鼻腔手术",
             "options": [
                 { "label": "是", "value": "是" },
                 { "label": "否", "value": "否" }
             ],
-            "field": "forbiddenDrugs"
+            "research": ["Inmunotek"],
+            "field": "noNasalSurgeryHistory"
+        },
+        "24": {
+            "title": "不可在5年内接受过任何屋尘螨或粉尘螨舌下免疫或过敏针免疫治疗",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "research": ["ALK"],
+            "field": "noDustMiteImmunotherapyHistory"
+        },
+        "25": {
+            "title": "60天内是否口服使用过以下糖皮质激素药物？",
+            "options": [
+                { "label": "泼尼松（强的松）", "value": "泼尼松（强的松）" },
+                { "label": "甲泼尼龙", "value": "甲泼尼龙" },
+                { "label": "地塞米松", "value": "地塞米松" },
+                { "label": "口服过其他糖皮质激素药物", "value": "口服过其他糖皮质激素药物" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["ALK"],
+            "field": "recentOralCorticosteroidUse",
+            "multiple": true
+        },
+        "26": {
+            "title": "90天内是否使用过以下长效或注射剂糖皮质激素？",
+            "options": [
+                { "label": "地塞米松", "value": "地塞米松" },
+                { "label": "倍他米松", "value": "倍他米松" },
+                { "label": "曲安奈德", "value": "曲安奈德" },
+                { "label": "使用过其他长效或注射型糖皮质激素", "value": "使用过其他长效或注射型糖皮质激素" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["ALK"],
+            "field": "recentLongActingCorticosteroidUse",
+            "multiple": true
+        },
+        "27": {
+            "title": "3月内是否发生因哮喘恶化导致的以下情况？",
+            "options": [
+                { "label": "急救治疗", "value": "急救治疗" },
+                { "label": "住院治疗", "value": "住院治疗" },
+                { "label": "全身性糖皮质激素治疗", "value": "全身性糖皮质激素治疗" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["ALK"],
+            "field": "recentAsthmaExacerbation",
+            "multiple": true
+        },
+        "28": {
+            "title": "是否在130天注射过抗过敏生物制剂？",
+            "options": [
+                { "label": "奥马珠单抗（茁乐）", "value": "奥马珠单抗（茁乐）" },
+                { "label": "度普利尤单抗（达必妥）", "value": "度普利尤单抗（达必妥）" },
+                { "label": "美泊利珠单抗（新可来）", "value": "美泊利珠单抗（新可来）" },
+                { "label": "其他抗过敏生物制剂", "value": "其他抗过敏生物制剂" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["ALK"],
+            "field": "recentBiologicTherapy",
+            "multiple": true
+        },
+        "29": {
+            "title": "当下是否有正在接受β受体阻滞剂或血管紧张素转化酶（ACE）抑制剂治疗的情况？",
+            "options": [
+                { "label": "美托洛尔", "value": "美托洛尔" },
+                { "label": "比索洛尔", "value": "比索洛尔" },
+                { "label": "普萘洛尔", "value": "普萘洛尔" },
+                { "label": "依那普利", "value": "依那普利" },
+                { "label": "雷米普利", "value": "雷米普利" },
+                { "label": "卡托普利", "value": "卡托普利" },
+                { "label": "没有", "value": "没有" }
+            ],
+            "research": ["Inmunotek"],
+            "field": "currentBetaBlockerOrACEInhibitorUse",
+            "multiple": true
+        },
+        "30": {
+            "title": "当下是否有正在接受免疫抑制剂治疗的情况？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "research": ["Inmunotek"],
+            "field": "currentImmunosuppressantUse"
+        },
+        "31": {
+            "title": "当下是否有正在接受生物制剂治疗的情况？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "research": ["Inmunotek"],
+            "field": "currentBiologicTherapy"
+        },
+        "32": {
+            "title": "当下是否有正在接受抗组胺药或皮质类固醇用于鼻炎外目的的治疗（感冒除外）？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "research": ["Inmunotek"],
+            "field": "currentAntihistamineOrCorticosteroidUse"
+        },
+        "33": {
+            "title": "当下是否在使用针对特定过敏原的脱敏免疫治疗？",
+            "options": [
+                { "label": "是", "value": "是" },
+                { "label": "否", "value": "否" }
+            ],
+            "research": ["ALK"],
+            "field": "currentAllergenSpecificImmunotherapy"
         }
     }
 }

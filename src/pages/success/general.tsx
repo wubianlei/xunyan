@@ -223,7 +223,8 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
   renderNextSteps = () => {
     const { researchMatches } = this.state;
     const hasHighMatch = researchMatches.some(match => match.matchPercentage >= 70);
-    
+    console.log('hasHighMatch======',hasHighMatch)
+    console.log('researchMatches=====',researchMatches)
     return (
       <View className='next-steps'>
         <AtDivider content='下一步' fontColor='#333' lineColor='#e5e5e5' />
@@ -285,10 +286,6 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
         <Text className='success-subtitle'>您的综合问卷信息已经成功提交</Text>
       </View>
 
-      {/* 研究匹配结果 */}
-      {/* <View className='match-results-section'>
-        {this.renderResearchMatches()}
-      </View> */}
 
       {/* 下一步指导 */}
       {this.renderNextSteps()}

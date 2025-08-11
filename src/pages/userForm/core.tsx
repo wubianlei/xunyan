@@ -7,7 +7,7 @@ import { formDataService } from '../../services/formDataService'
 import type { UserFormData } from '../../models/userForm'
 import TabBar from '../../components/TabBar'
 // import questionsData from './questions.json'
-import questionsData from './mock/rhinitis1.json'
+import questionsData from './mock/rhinitis.json'
 import './core.less'
 
 // import "taro-ui/dist/style/components/form.scss"

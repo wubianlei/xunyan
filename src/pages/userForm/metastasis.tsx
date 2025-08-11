@@ -6,7 +6,7 @@ import { formDataService } from '../../services/formDataService'
 // 引入并实际使用UserFormData类型
 import type { UserFormData } from '../../models/userForm'
 import TabBar from '../../components/TabBar'
-import questionsData from './questions.json'
+import questionsData from './mock/questions.json'
 // import questionsData from './rhinitis.json'
 import './index.less'
 
