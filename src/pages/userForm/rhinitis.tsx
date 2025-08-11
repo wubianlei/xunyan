@@ -172,9 +172,9 @@ export default class UserForm extends Component<{}, UserFormState> {
 
   getExitConditions = () => {
     return {
-      dustMiteAllergy: '', // 核心 4
-      additionalAllergens: [],
-      occasionalPetExposure: '',
+      dustMiteAllergy: ['是'], // 核心 4
+      additionalAllergens: ['没有'],
+      occasionalPetExposure: ['是'],
       persistentSymptomsOnMedication: '',
       eligibleAge: '', // 其他 3
       gender: '',
