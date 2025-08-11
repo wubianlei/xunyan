@@ -19,6 +19,9 @@ interface GeneralSuccessPageState {
   maxPossibleScore: number
 }
 
+const NUM_OF_INMUNOTEK = 22
+const NUM_OF_ALK = 14
+
 export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPageState> {
   state: GeneralSuccessPageState = {
     formData: null,

@@ -1,47 +1,7 @@
 {
-  "libVersion": "3.8.6",
+  "libVersion": "3.9.0",
   "projectname": "xunyan",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "pages/success/general",
-          "pathName": "pages/success/general",
-          "query": "",
-          "scene": null,
-          "launchMode": "default"
-        },
-        {
-          "name": "pages/login/index",
-          "pathName": "pages/login/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/success/index",
-          "pathName": "pages/success/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/profile/index",
-          "pathName": "pages/profile/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        },
-        {
-          "name": "pages/userForm/index",
-          "pathName": "pages/userForm/index",
-          "query": "",
-          "launchMode": "default",
-          "scene": null
-        }
-      ]
-    }
-  },
+  "condition": {},
   "setting": {
     "urlCheck": true,
     "coverView": true,

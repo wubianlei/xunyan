@@ -7,7 +7,7 @@ import { formDataService } from '../../services/formDataService'
 import type { UserFormData } from '../../models/userForm'
 import TabBar from '../../components/TabBar'
 // import questionsData from './questions.json'
-import questionsData from './mock/rhinitis.json'
+import questionsData from './mock/rhinitisFinal.json'
 import './index.less'
 
 // import "taro-ui/dist/style/components/form.scss"
@@ -15,98 +15,104 @@ import './index.less'
 
 
 interface UserFormState {
-  // 核心 4
-  dustMiteAllergy: string
-  additionalAllergens: string[]
-  occasionalPetExposure: string
-  persistentSymptomsOnMedication: string
-  // 其他 3
-  eligibleAge: string
+  // 核心字段
+  dustMiteAllergyDiagnosis: string
+  otherAllergenSensitivity: string[]
+  ageEligibility: string
   gender: string
-  pregnancyOrLactation: string
-  // 病史 9
-  respiratoryCardiovascularConditions: string[]
-  cardiacEndocrineConditions: string[]
-  mentalOralOncologyConditions: string[]
-  immuneSystemDisorders: string[]
-  chronicInfections: string[]
-  severeAllergicReactionHistory: string[]
-  onlyDustMiteAllergy: string
-  eosinophilicEsophagitis: string
+  pregnancyLactationPlanning: string
+  
+  // 疾病状况
+  respiratoryConditions: string[]
+  immuneSystemConditions: string[]
+  cardiovascularEndocrineConditions: string[]
+  chronicInfectionHistory: string[]
+  psychiatricOralOncologyConditions: string[]
+  severeAdverseReactionHistory: string[]
   systemicAllergicReactionHistory: string[]
-  // 治疗史 1
-  antidepressantAntipsychoticUse: string
-  // 洗脱 11  (18-)
-  noDesensitizationHistory: string
-  recentImmunosuppressiveMedication: string[]
-  recentKetotifenUse: string
-  recentRespiratoryIssues: string[]
-  recentSevereAllergicEvents: string[]
-  noNasalSurgeryHistory: string
-  noDustMiteImmunotherapyHistory: string
+  
+  // 治疗史
+  antidepressantAntipsychoticHistory: string
+  pastDustMiteImmunotherapyHistory: string
+  pastYearDustMiteImmunotherapy: string[]
+  
+  // 近期用药和治疗
+  recentImmunosuppressiveMedicationUse: string[]
+  recentKetotifenAntipsychoticUse: string[]
+  recentRespiratoryComplications: string[]
+  pastTwoYearAllergicEvents: string[]
+  recentNasalSurgeryHistory: string
+  recentResearchParticipation: string
   recentOralCorticosteroidUse: string[]
   recentLongActingCorticosteroidUse: string[]
-  recentAsthmaExacerbation: string[]
-  recentBiologicTherapy: string[]
-  // 承诺 0
-  // 停用药 5
-  currentBetaBlockerOrACEInhibitorUse: string[]
-  currentImmunosuppressantUse: string
-  currentBiologicTherapy: string
-  currentAntihistamineOrCorticosteroidUse: string
-  currentAllergenSpecificImmunotherapy: string
+  recentAsthmaExacerbationEvents: string[]
+  recentBiologicTherapyUse: string[]
+  
+  // 研究期间承诺和限制
+  contraceptionComplianceDuringStudy: string
+  studyLifestyleRestrictionCompliance: string
+  researcherRelationshipAndStudyEligibility: string
+  prohibitedMedicationComplianceDuringStudy: string
+  currentAllergenImmunotherapy: string
+  
   currentQuestion: number
 }
 
+  const NONE = ['以上均没有' , '没有' , '无','没有使用过以上2种药物', '没有使用过' , '以上都没有' , '没有以上情况' , '没有以上疾病', '没有发生过']
+
 export default class UserForm extends Component<{}, UserFormState> {
   state: UserFormState = {
-    dustMiteAllergy: '', // 核心 4
-    additionalAllergens: [],
-    occasionalPetExposure: '',
-    persistentSymptomsOnMedication: '',
-    eligibleAge: '', // 其他 3
+    // 核心字段
+    dustMiteAllergyDiagnosis: '',
+    otherAllergenSensitivity: [],
+    ageEligibility: '',
     gender: '',
-    pregnancyOrLactation: '',
-    respiratoryCardiovascularConditions: [], // 病史 9 
-    cardiacEndocrineConditions: [],
-    mentalOralOncologyConditions: [],
-    immuneSystemDisorders: [],
-    chronicInfections: [],
-    severeAllergicReactionHistory: [],
-    onlyDustMiteAllergy: '',
-    eosinophilicEsophagitis: '',
+    pregnancyLactationPlanning: '',
+    
+    // 疾病状况
+    respiratoryConditions: [],
+    immuneSystemConditions: [],
+    cardiovascularEndocrineConditions: [],
+    chronicInfectionHistory: [],
+    psychiatricOralOncologyConditions: [],
+    severeAdverseReactionHistory: [],
     systemicAllergicReactionHistory: [],
-    antidepressantAntipsychoticUse: '', // 治疗史 1
-    noDesensitizationHistory: '', // 洗脱 11
-    recentImmunosuppressiveMedication: [],
-    recentKetotifenUse: '',
-    recentRespiratoryIssues: [],
-    recentSevereAllergicEvents: [],
-    noNasalSurgeryHistory: '',
-    noDustMiteImmunotherapyHistory: '',
+    
+    // 治疗史
+    antidepressantAntipsychoticHistory: '',
+    pastDustMiteImmunotherapyHistory: '',
+    pastYearDustMiteImmunotherapy: [],
+    
+    // 近期用药和治疗
+    recentImmunosuppressiveMedicationUse: [],
+    recentKetotifenAntipsychoticUse: [],
+    recentRespiratoryComplications: [],
+    pastTwoYearAllergicEvents: [],
+    recentNasalSurgeryHistory: '',
+    recentResearchParticipation: '',
     recentOralCorticosteroidUse: [],
     recentLongActingCorticosteroidUse: [],
-    recentAsthmaExacerbation: [],
-    recentBiologicTherapy: [],
-    // 承诺 0
-    // 停用药 5
-    currentBetaBlockerOrACEInhibitorUse: [],
-    currentImmunosuppressantUse: '',
-    currentBiologicTherapy: '',
-    currentAntihistamineOrCorticosteroidUse: '',
-    currentAllergenSpecificImmunotherapy: '',
+    recentAsthmaExacerbationEvents: [],
+    recentBiologicTherapyUse: [],
+    
+    // 研究期间承诺和限制
+    contraceptionComplianceDuringStudy: '',
+    studyLifestyleRestrictionCompliance: '',
+    researcherRelationshipAndStudyEligibility: '',
+    prohibitedMedicationComplianceDuringStudy: '',
+    currentAllergenImmunotherapy: '',
+    
     currentQuestion: 1
   }
 
-  // isMultiSelectQuestion = (currentQ: any): boolean => {
-  //   return currentQ.multiple
-  // }
 
-  handleChange = (field: string, value: string, isMultiSelect: boolean): void => {
+
+  handleChange = (field: string, value: string, isMultiSelect: boolean, research: string[]): void => {
     if (isMultiSelect) {
       const currentValue = this.state[field as keyof UserFormState] as string[]
       let newValue: string[]
       
+      // 多选逻辑 每选一个新选项 添加内容至数组
       if (currentValue.includes(value)) {
         newValue = currentValue.filter(v => v !== value)
       } else {
@@ -114,10 +120,10 @@ export default class UserForm extends Component<{}, UserFormState> {
       }
 
       // If user selects '以上均没有', unselect all others
-      if (value === '以上均没有') {
+      if (NONE.includes(value)) {
         newValue = [value]
-      } else if (newValue.length > 0 && newValue.includes('以上均没有')) {
-        newValue = newValue.filter(v => v !== '以上均没有')
+      } else if (newValue.length > 0 && newValue.some(item => NONE.includes(item))) {
+        newValue = newValue.filter(v => !NONE.includes(v))
       }
 
       console.log('newV', newValue)
@@ -126,11 +132,17 @@ export default class UserForm extends Component<{}, UserFormState> {
         [field]: newValue
       } as unknown as Pick<UserFormState, keyof UserFormState>, () => {
         if (newValue.length > 0) {
+          // 统计不同research的题目量
+          // if(research.includes('Inmunotek')) {
+          //   this.setState({ numOfInmunotek: this.state.numOfInmunotek + 1 });
+          // } else if(research.includes('ALK')) {
+          //   this.setState({ numOfALK: this.state.numOfALK + 1 });
+          // }
           // 退出问卷流程 暂时不走这个逻辑
           // this.checkExitConditions(field, newValue)
           // Only advance if it's not an exit condition
           if (!this.shouldExit(field, newValue)) {
-            const isLastQuestion = this.state.currentQuestion === 33;
+            const isLastQuestion = this.state.currentQuestion === 30;
             if (isLastQuestion) {
               // 如果是最后一个问题，自动提交表单
               this.handleSubmit();
@@ -147,7 +159,7 @@ export default class UserForm extends Component<{}, UserFormState> {
         // 退出问卷流程 暂时不走这个逻辑
         // this.checkExitConditions(field, value)
         
-        const isLastQuestion = this.state.currentQuestion === 33;
+        const isLastQuestion = this.state.currentQuestion === 30;
         if (isLastQuestion) {
           // 如果是最后一个问题，自动提交表单
           this.handleSubmit();
@@ -172,41 +184,45 @@ export default class UserForm extends Component<{}, UserFormState> {
 
   getExitConditions = () => {
     return {
-      dustMiteAllergy: ['是'], // 核心 4
-      additionalAllergens: ['没有'],
-      occasionalPetExposure: ['是'],
-      persistentSymptomsOnMedication: '',
-      eligibleAge: '', // 其他 3
+      // 核心字段
+      dustMiteAllergyDiagnosis: '否', // 没有尘螨过敏诊断则退出
+      otherAllergenSensitivity: [],
+      ageEligibility: '否', // 年龄不符合则退出
       gender: '',
-      pregnancyOrLactation: '',
-      respiratoryCardiovascularConditions: [], // 病史 9 
-      cardiacEndocrineConditions: [],
-      mentalOralOncologyConditions: [],
-      immuneSystemDisorders: [],
-      chronicInfections: [],
-      severeAllergicReactionHistory: [],
-      onlyDustMiteAllergy: '',
-      eosinophilicEsophagitis: '',
-      systemicAllergicReactionHistory: [],
-      antidepressantAntipsychoticUse: '', // 治疗史 1
-      noDesensitizationHistory: '', // 洗脱 11
-      recentImmunosuppressiveMedication: [],
-      recentKetotifenUse: '',
-      recentRespiratoryIssues: [],
-      recentSevereAllergicEvents: [],
-      noNasalSurgeryHistory: '',
-      noDustMiteImmunotherapyHistory: '',
-      recentOralCorticosteroidUse: [],
-      recentLongActingCorticosteroidUse: [],
-      recentAsthmaExacerbation: [],
-      recentBiologicTherapy: [],
-      // 承诺 0
-      // 停用药 5
-      currentBetaBlockerOrACEInhibitorUse: [],
-      currentImmunosuppressantUse: '',
-      currentBiologicTherapy: '',
-      currentAntihistamineOrCorticosteroidUse: '',
-      currentAllergenSpecificImmunotherapy: '',
+      pregnancyLactationPlanning: ['是'], // 怀孕/哺乳期则退出
+      
+      // 疾病状况 - 有以下疾病则退出
+      respiratoryConditions: ['艾滋病'],
+      immuneSystemConditions: ['是有自身免疫病（如红斑狼疮、桥本甲状腺炎）', '免疫力低下（器官移植后、长期使用免疫抑制剂、免疫缺陷等）', '有遗传性血管性水肿疾病', '有嗜酸细胞性食管炎'],
+      cardiovascularEndocrineConditions: [],
+      chronicInfectionHistory: ['HIV', '乙肝', '梅毒', '真菌感染', '寄生虫感染', '其他慢性感染x1'],
+      psychiatricOralOncologyConditions: ['精神疾病', '肿瘤'],
+      severeAdverseReactionHistory: ['食物严重不良反应', '蜜蜂、黄蜂等叮咬后严重不良反应', '药物严重不良反应'],
+      systemicAllergicReactionHistory: ['速发严重过敏反应且伴随心肺症状', '全身性荨麻疹', '重度面部血管性水肿', '其他全身过敏性反应'],
+      
+      // 治疗史
+      antidepressantAntipsychoticHistory: ['是'], // 使用过抗抑郁药则退出
+      pastDustMiteImmunotherapyHistory: ['接受过舌下治疗，超过1个月', '接受过过敏针治疗'],
+      pastYearDustMiteImmunotherapy: ['接受过舌下治疗', '接受过过敏针治疗'],
+      
+      // 近期用药和治疗
+      recentImmunosuppressiveMedicationUse: ['糖皮质激素', '生物制剂药物（如生物注射剂）'],
+      recentKetotifenAntipsychoticUse: ['酮替芬', '抗精神病药物'],
+      recentRespiratoryComplications: ['呼吸道感染', '哮喘急性发作且病情不稳定'],
+      pastTwoYearAllergicEvents: ['慢性荨麻疹', '严重急性过敏反应（如过敏性休克）', '血管性水肿'],
+      recentNasalSurgeryHistory: ['是'],
+      recentResearchParticipation: ['是'],
+      recentOralCorticosteroidUse: ['泼尼松（强的松）', '甲泼尼龙', '地塞米松', '口服过其他糖皮质激素药物'],
+      recentLongActingCorticosteroidUse: ['地塞米松', '倍他米松', '曲安奈德', '使用过其他长效或注射型糖皮质激素'],
+      recentAsthmaExacerbationEvents: ['急救治疗', '住院治疗', '全身性糖皮质激素治疗'],
+      recentBiologicTherapyUse: ['奥马珠单抗（茁乐）', '度普利尤单抗（达必妥）', '美泊利珠单抗（新可来）', '其他抗过敏生物制剂'],
+      
+      // 研究期间承诺和限制
+      contraceptionComplianceDuringStudy: ['不接受'],
+      studyLifestyleRestrictionCompliance: ['不接受'],
+      researcherRelationshipAndStudyEligibility: ['不符合'],
+      prohibitedMedicationComplianceDuringStudy: ['否'],
+      currentAllergenImmunotherapy: ['是']
     }
   }
 
@@ -320,7 +336,7 @@ export default class UserForm extends Component<{}, UserFormState> {
                 <View
                   key={option.value}
                   className={`option-item ${isSelected ? 'selected' : ''} ${isMultiSelect ? 'multi-select' : ''}`}
-                  onClick={() => this.handleChange(currentQ.field, option.value, isMultiSelect)}
+                  onClick={() => this.handleChange(currentQ.field, option.value, isMultiSelect,currentQ.research)}
                 >
                   <View className={`option-circle ${isMultiSelect ? 'square' : ''}`}>
                     <View className="option-inner" />
