@@ -6,13 +6,14 @@ import { formDataService } from '../../services/formDataService'
 // 引入并实际使用UserFormData类型
 import type { UserFormData } from '../../models/userForm'
 import TabBar from '../../components/TabBar'
-// import questionsData from './questions.json'
+
 import questionsData from './mock/rhinitisFinal.json'
 import './index.less'
 
 // import "taro-ui/dist/style/components/form.scss"
 // import 'taro-ui/dist/style/index.scss'
 
+const QUESTION_MAX_NUM = Object.keys(questionsData.questions).length
 
 interface UserFormState {
   // 核心字段
@@ -55,7 +56,11 @@ interface UserFormState {
   prohibitedMedicationComplianceDuringStudy: string
   currentAllergenImmunotherapy: string
   
+  inmunotekCount: number;
+  alkCount: number;
+
   currentQuestion: number
+  presentValue: string[]
 }
 
   const NONE = ['以上均没有' , '没有' , '无','没有使用过以上2种药物', '没有使用过' , '以上都没有' , '没有以上情况' , '没有以上疾病', '没有发生过']
@@ -101,13 +106,22 @@ export default class UserForm extends Component<{}, UserFormState> {
     researcherRelationshipAndStudyEligibility: '',
     prohibitedMedicationComplianceDuringStudy: '',
     currentAllergenImmunotherapy: '',
-    
-    currentQuestion: 1
+
+    inmunotekCount: 0,
+    alkCount: 0,
+    currentQuestion: 1,
+    presentValue: []
   }
 
 
 
   handleChange = (field: string, value: string, isMultiSelect: boolean, research: string[]): void => {
+     // 统计不同 research 的题目量
+    const inmunotekCount = research.includes('Inmunotek') ? this.state.inmunotekCount + 1 : this.state.inmunotekCount;
+    const alkCount = research.includes('ALK') ? this.state.alkCount + 1 : this.state.alkCount;
+
+    this.setState({ inmunotekCount, alkCount })
+
     if (isMultiSelect) {
       const currentValue = this.state[field as keyof UserFormState] as string[]
       let newValue: string[]
@@ -129,7 +143,8 @@ export default class UserForm extends Component<{}, UserFormState> {
       console.log('newV', newValue)
 
       this.setState({
-        [field]: newValue
+        [field]: newValue,
+        presentValue: newValue
       } as unknown as Pick<UserFormState, keyof UserFormState>, () => {
         if (newValue.length > 0) {
           // 统计不同research的题目量
@@ -141,25 +156,23 @@ export default class UserForm extends Component<{}, UserFormState> {
           // 退出问卷流程 暂时不走这个逻辑
           // this.checkExitConditions(field, newValue)
           // Only advance if it's not an exit condition
-          if (!this.shouldExit(field, newValue)) {
-            const isLastQuestion = this.state.currentQuestion === 30;
-            if (isLastQuestion) {
-              // 如果是最后一个问题，自动提交表单
-              this.handleSubmit();
-            } else {
-              // this.setState({ currentQuestion: this.state.currentQuestion + 1 });
-            }
+          const isLastQuestion = this.state.currentQuestion === QUESTION_MAX_NUM;
+          if (isLastQuestion) {
+            // 如果是最后一个问题，自动提交表单
+            this.handleSubmit();
           }
         }
       })
     } else {
       this.setState({
-        [field]: value
+        [field]: value,
+        presentValue: [...value]
       } as unknown as Pick<UserFormState, keyof UserFormState>, () => {
         // 退出问卷流程 暂时不走这个逻辑
         // this.checkExitConditions(field, value)
+        console.log('newV', value)
         
-        const isLastQuestion = this.state.currentQuestion === 30;
+        const isLastQuestion = this.state.currentQuestion === QUESTION_MAX_NUM;
         if (isLastQuestion) {
           // 如果是最后一个问题，自动提交表单
           this.handleSubmit();
@@ -170,38 +183,38 @@ export default class UserForm extends Component<{}, UserFormState> {
     }
   }
 
-  shouldExit = (field: string, value: string | string[]): boolean => {
-    const exitConditions = this.getExitConditions()
-    if (field in exitConditions) {
-      const condition = exitConditions[field as keyof typeof exitConditions]
-      if (Array.isArray(value)) {
-        return value.some(v => condition.includes(v))
-      }
-      return condition.includes(value)
-    }
-    return false
-  }
+  // shouldExit = (field: string, value: string | string[]): boolean => {
+  //   const exitConditions = this.getExitConditions()
+  //   if (field in exitConditions) {
+  //     const condition = exitConditions[field as keyof typeof exitConditions]
+  //     if (Array.isArray(value)) {
+  //       return value.some(v => condition.includes(v))
+  //     }
+  //     return condition.includes(value)
+  //   }
+  //   return false
+  // }
 
-  getExitConditions = () => {
+  passConditions = () => {
     return {
       // 核心字段
-      dustMiteAllergyDiagnosis: '否', // 没有尘螨过敏诊断则退出
-      otherAllergenSensitivity: [],
-      ageEligibility: '否', // 年龄不符合则退出
+      dustMiteAllergyDiagnosis: '是', // 
+      otherAllergenSensitivity: ['以上都没有'],
+      ageEligibility: '是', // 
       gender: '',
-      pregnancyLactationPlanning: ['是'], // 怀孕/哺乳期则退出
+      pregnancyLactationPlanning: ['否'], // 
       
       // 疾病状况 - 有以下疾病则退出
-      respiratoryConditions: ['艾滋病'],
-      immuneSystemConditions: ['是有自身免疫病（如红斑狼疮、桥本甲状腺炎）', '免疫力低下（器官移植后、长期使用免疫抑制剂、免疫缺陷等）', '有遗传性血管性水肿疾病', '有嗜酸细胞性食管炎'],
-      cardiovascularEndocrineConditions: [],
-      chronicInfectionHistory: ['HIV', '乙肝', '梅毒', '真菌感染', '寄生虫感染', '其他慢性感染x1'],
-      psychiatricOralOncologyConditions: ['精神疾病', '肿瘤'],
-      severeAdverseReactionHistory: ['食物严重不良反应', '蜜蜂、黄蜂等叮咬后严重不良反应', '药物严重不良反应'],
-      systemicAllergicReactionHistory: ['速发严重过敏反应且伴随心肺症状', '全身性荨麻疹', '重度面部血管性水肿', '其他全身过敏性反应'],
+      respiratoryConditions: ['没有'],
+      immuneSystemConditions: ['没有以上情况'],
+      cardiovascularEndocrineConditions: ['没有以上疾病'],
+      chronicInfectionHistory: ['以上均没有'],
+      psychiatricOralOncologyConditions: ['没有以上疾病'],
+      severeAdverseReactionHistory: ['没有'],
+      systemicAllergicReactionHistory: ['没有以上情况'],
       
       // 治疗史
-      antidepressantAntipsychoticHistory: ['是'], // 使用过抗抑郁药则退出
+      antidepressantAntipsychoticHistory: ['是'], 
       pastDustMiteImmunotherapyHistory: ['接受过舌下治疗，超过1个月', '接受过过敏针治疗'],
       pastYearDustMiteImmunotherapy: ['接受过舌下治疗', '接受过过敏针治疗'],
       
@@ -226,11 +239,11 @@ export default class UserForm extends Component<{}, UserFormState> {
     }
   }
 
-  checkExitConditions = (field: string, value: string | string[]): void => {
-    if (this.shouldExit(field, value)) {
-      this.exitQuestionnaire()
-    }
-  }
+  // checkExitConditions = (field: string, value: string | string[]): void => {
+  //   if (this.shouldExit(field, value)) {
+  //     this.exitQuestionnaire()
+  //   }
+  // }
 
   exitQuestionnaire = (): void => {
     Taro.showModal({
@@ -247,6 +260,9 @@ export default class UserForm extends Component<{}, UserFormState> {
   handleSubmit = async (): Promise<void> => {
     try {
       console.log('问卷答案:', this.state)
+      console.log('Inmunotek 题目数量:', this.state.inmunotekCount)
+      console.log('ALK 题目数量:', this.state.alkCount)
+      
       // 移除currentQuestion，它不需要展示在成功页面
       const { currentQuestion, ...formData } = this.state as unknown as UserFormState & { currentQuestion: number }
       
@@ -283,7 +299,18 @@ export default class UserForm extends Component<{}, UserFormState> {
   }
 
   handleNextQuestion = (): void => {
-    this.setState({ currentQuestion: this.state.currentQuestion + 1 });
+    if(this.state.presentValue.length > 0) {
+      this.setState({ 
+        currentQuestion: this.state.currentQuestion + 1,
+        presentValue: []
+      })
+    } else {
+      Taro.showToast({
+        title: '请至少选择一个选项',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   }
 
   handlePrevQuestion = (): void => {
@@ -301,7 +328,7 @@ export default class UserForm extends Component<{}, UserFormState> {
 
     return (
       <View className="question-container">
-        <View className="question-number">问题 {currentQuestion}/{Object.keys(questions).length}</View>
+        <View className="question-number">问题 {currentQuestion}/{QUESTION_MAX_NUM}</View>
         <Text className="question-title">{currentQ.title}</Text>
         <View className="options-container">
           {currentQ.options.map((option, index) => {
@@ -354,8 +381,6 @@ export default class UserForm extends Component<{}, UserFormState> {
         <View className="options-buttons">
           <AtButton type='primary' className="next"
           onClick={()=> this.handleNextQuestion() }>下一题</AtButton>
-          {/* { currentQuestion>1 && <AtButton type='secondary' 
-          onClick={()=> this.handlePrevQuestion() }>上一题</AtButton> } */}
         </View>
       </View>
     )

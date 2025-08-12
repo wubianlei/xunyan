@@ -1,7 +1,26 @@
 {
   "libVersion": "3.9.0",
   "projectname": "xunyan",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "综合问卷成功后",
+          "pathName": "pages/success/general",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        },
+        {
+          "name": "pages/userForm/index",
+          "pathName": "pages/userForm/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
   "setting": {
     "urlCheck": true,
     "coverView": true,
