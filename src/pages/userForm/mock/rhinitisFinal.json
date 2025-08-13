@@ -8,7 +8,7 @@
       ],
       "field": "dustMiteAllergyDiagnosis",
       "research": ["Inmunotek", "ALK"],
-      "pass": ""
+      "pass": ["是"]
     },
     "2": {
       "title": "是否对屋尘螨或粉尘螨之外的过敏原过敏？",
@@ -23,7 +23,7 @@
       "field": "otherAllergenSensitivity",
       "research": ["Inmunotek", "ALK"],
       "multiple": true,
-      "pass": ""
+      "pass": ["以上都没有"]
     },
     "3": {
       "title": "是否年龄在12-65岁之间？",
@@ -33,7 +33,7 @@
       ],
       "field": "ageEligibility",
       "research": ["Inmunotek", "ALK"],
-      "pass": ""
+      "pass": ["是"]
     },
     "4": {
       "title": "性别",
@@ -43,7 +43,7 @@
       ],
       "field": "gender",
       "research": ["Inmunotek", "ALK"],
-      "pass": ""
+      "pass": ["男","女"]
     },
     "5": {
       "title": "当前是否处于怀孕或哺乳期，或是否有怀孕计划？",
@@ -55,7 +55,7 @@
       "precondition": "女",
       "field": "pregnancyLactationPlanning",
       "research": ["Inmunotek", "ALK"],
-      "pass": ""
+      "pass": ["否"]
     },
     "6": {
       "title": "是否有以下疾病？",
@@ -69,7 +69,7 @@
       "field": "respiratoryConditions",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "7": {
       "title": "是否有以下相对罕见的身体状况？",
@@ -83,7 +83,7 @@
       "field": "immuneSystemConditions",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有以上情况"]
     },
     "8": {
       "title": "是否有以下疾病？",
@@ -97,7 +97,7 @@
       "field": "cardiovascularEndocrineConditions",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有以上疾病"]
     },
     "9": {
       "title": "是否有慢性感染情况？",
@@ -113,7 +113,7 @@
       "field": "chronicInfectionHistory",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["以上均没有"]
     },
     "10": {
       "title": "是否有以下疾病？",
@@ -126,7 +126,7 @@
       "field": "psychiatricOralOncologyConditions",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有以上疾病"]
     },
     "11": {
       "title": "是否有以下严重不良反应史？",
@@ -139,7 +139,7 @@
       "field": "severeAdverseReactionHistory",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "12": {
       "title": "是否有过全身过敏性反应相关病史？",
@@ -153,7 +153,7 @@
       "field": "systemicAllergicReactionHistory",
       "research": ["ALK"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有以上情况"]
     },
     "13": {
       "title": "是否使用过抗抑郁或抗精神病药物？",
@@ -163,7 +163,7 @@
       ],
       "field": "antidepressantAntipsychoticHistory",
       "research": ["ALK"],
-      "pass": ""
+      "pass": ["否"]
     },
     "14": {
       "title": "5年内是否接受过屋尘螨或粉尘螨免疫脱敏治疗？",
@@ -176,7 +176,7 @@
       "field": "pastDustMiteImmunotherapyHistory",
       "research": ["Inmunotek"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "15": {
       "title": "3个月内是否使用过以下药物？",
@@ -188,7 +188,7 @@
       "research": ["Inmunotek"],
       "field": "recentImmunosuppressiveMedicationUse",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "16": {
       "title": "14天内是否使用过以下药物",
@@ -200,7 +200,7 @@
       "research": ["Inmunotek"],
       "field": "recentKetotifenAntipsychoticUse",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有使用过以上2种药物"]
     },
     "17": {
       "title": "4周内是否有以下情况？",
@@ -212,7 +212,7 @@
       "research": ["Inmunotek"],
       "field": "recentRespiratoryComplications",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "18": {
       "title": "2年内是否有过以下情况？",
@@ -225,7 +225,7 @@
       "research": ["Inmunotek"],
       "field": "pastTwoYearAllergicEvents",
       "multiple": true,
-      "pass": ""
+      "pass": ["无"]
     },
     "19": {
       "title": "6个月内是否接受过鼻腔手术",
@@ -235,7 +235,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "recentNasalSurgeryHistory",
-      "pass": ""
+      "pass": ["否"]
     },
     "20": {
       "title": "是否在30天内参加过其他研究",
@@ -245,7 +245,7 @@
       ],
       "research": ["ALK"],
       "field": "recentResearchParticipation",
-      "pass": ""
+      "pass": ["否"]
     },
     "21": {
       "title": "过去12个月内是否接受过屋尘螨或粉尘螨免疫治疗？",
@@ -257,7 +257,7 @@
       "field": "pastYearDustMiteImmunotherapy",
       "research": ["ALK"],
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "22": {
       "title": "60天内是否口服使用过以下糖皮质激素药物？",
@@ -271,7 +271,7 @@
       "research": ["ALK"],
       "field": "recentOralCorticosteroidUse",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有使用过"]
     },
     "23": {
       "title": "90天内是否使用过以下长效或注射剂糖皮质激素？",
@@ -285,7 +285,7 @@
       "research": ["ALK"],
       "field": "recentLongActingCorticosteroidUse",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有使用过"]
     },
     "24": {
       "title": "3月内是否发生因哮喘恶化导致的以下情况？",
@@ -298,7 +298,7 @@
       "research": ["ALK"],
       "field": "recentAsthmaExacerbationEvents",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有发生过"]
     },
     "25": {
       "title": "是否在130天注射过抗过敏生物制剂？",
@@ -312,7 +312,7 @@
       "research": ["ALK"],
       "field": "recentBiologicTherapyUse",
       "multiple": true,
-      "pass": ""
+      "pass": ["没有"]
     },
     "26": {
       "title": "若您有生育能力，是否可接受在研究期间避孕？",
@@ -324,7 +324,7 @@
       "depend": "gender",
       "precondition": "女",
       "field": "contraceptionComplianceDuringStudy",
-      "pass": ""
+      "pass": ["可以"]
     },
     "27": {
       "title": "因设计需要，试验期间需满足以下条件，是否可以接受？\na. 不可进行鼻腔手术\nb. 不可出现搬家等导致生活环境出现明显变化的情况\nc. 不可开始使用防螨床上用品或类似装备",
@@ -334,7 +334,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "studyLifestyleRestrictionCompliance",
-      "pass": ""
+      "pass": ["可以"]
     },
     "28": {
       "title": "您是否符合以下情况：\na. 不是研究者直系亲属\nb. 当前没有参加其他研究",
@@ -344,7 +344,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "researcherRelationshipAndStudyEligibility",
-      "pass": ""
+      "pass": ["符合"]
     },
     "29": {
       "title": "参加研究时不可同时使用以下药物，是否可行？\na. β受体阻滞剂（如美托洛尔、比索洛尔、普萘洛尔）\nb. 血管紧张素转化酶（ACE）抑制剂（如依那普利、雷米普利、卡托普利）\nc. 将抗组胺药或皮质类固醇用于鼻炎外目的的治疗（感冒除外）",
@@ -354,7 +354,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "prohibitedMedicationComplianceDuringStudy",
-      "pass": ""
+      "pass": ["是"]
     },
     "30": {
       "title": "当下是否在使用针对特定过敏原的脱敏免疫治疗？",
@@ -364,7 +364,7 @@
       ],
       "research": ["Inmunotek", "ALK"],
       "field": "currentAllergenImmunotherapy",
-      "pass": ""
+      "pass": ["否"]
     }
   }
 }

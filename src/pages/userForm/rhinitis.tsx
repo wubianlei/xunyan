@@ -56,8 +56,12 @@ interface UserFormState {
   prohibitedMedicationComplianceDuringStudy: string
   currentAllergenImmunotherapy: string
   
-  inmunotekCount: number;
-  alkCount: number;
+  inmunotekCount: number
+  alkCount: number
+
+  // 每题是否通过
+  inmunotekPassFlags: boolean[]
+  alkPassFlags: boolean[]
 
   currentQuestion: number
   presentValue: string[]
@@ -109,159 +113,108 @@ export default class UserForm extends Component<{}, UserFormState> {
 
     inmunotekCount: 0,
     alkCount: 0,
+    inmunotekPassFlags: [],
+    alkPassFlags: [],
     currentQuestion: 1,
     presentValue: []
   }
 
+  handleChange = (
+    field: string,
+    value: string,
+    isMulti: boolean
+  ) => {
+    if (isMulti) {
+      const cur = this.state[field as keyof UserFormState] as string[];
+      const newVal = cur.includes(value)
+        ? cur.filter(v => v !== value)
+        : [...cur, value];
 
-
-  handleChange = (field: string, value: string, isMultiSelect: boolean, research: string[]): void => {
-     // 统计不同 research 的题目量
-    const inmunotekCount = research.includes('Inmunotek') ? this.state.inmunotekCount + 1 : this.state.inmunotekCount;
-    const alkCount = research.includes('ALK') ? this.state.alkCount + 1 : this.state.alkCount;
-
-    this.setState({ inmunotekCount, alkCount })
-
-    if (isMultiSelect) {
-      const currentValue = this.state[field as keyof UserFormState] as string[]
-      let newValue: string[]
-      
-      // 多选逻辑 每选一个新选项 添加内容至数组
-      if (currentValue.includes(value)) {
-        newValue = currentValue.filter(v => v !== value)
-      } else {
-        newValue = [...currentValue, value]
-      }
-
-      // If user selects '以上均没有', unselect all others
       if (NONE.includes(value)) {
-        newValue = [value]
-      } else if (newValue.length > 0 && newValue.some(item => NONE.includes(item))) {
-        newValue = newValue.filter(v => !NONE.includes(v))
+        this.setState({ [field]: [value], presentValue: [value] } as any);
+      } else {
+        const filtered = newVal.filter(v => !NONE.includes(v));
+        this.setState({ [field]: filtered, presentValue: filtered } as any);
       }
-
-      console.log('newV', newValue)
-
-      this.setState({
-        [field]: newValue,
-        presentValue: newValue
-      } as unknown as Pick<UserFormState, keyof UserFormState>, () => {
-        if (newValue.length > 0) {
-          // 统计不同research的题目量
-          // if(research.includes('Inmunotek')) {
-          //   this.setState({ numOfInmunotek: this.state.numOfInmunotek + 1 });
-          // } else if(research.includes('ALK')) {
-          //   this.setState({ numOfALK: this.state.numOfALK + 1 });
-          // }
-          // 退出问卷流程 暂时不走这个逻辑
-          // this.checkExitConditions(field, newValue)
-          // Only advance if it's not an exit condition
-          const isLastQuestion = this.state.currentQuestion === QUESTION_MAX_NUM;
-          if (isLastQuestion) {
-            // 如果是最后一个问题，自动提交表单
-            this.handleSubmit();
-          }
-        }
-      })
     } else {
-      this.setState({
-        [field]: value,
-        presentValue: [...value]
-      } as unknown as Pick<UserFormState, keyof UserFormState>, () => {
-        // 退出问卷流程 暂时不走这个逻辑
-        // this.checkExitConditions(field, value)
-        console.log('newV', value)
-        
-        const isLastQuestion = this.state.currentQuestion === QUESTION_MAX_NUM;
-        if (isLastQuestion) {
-          // 如果是最后一个问题，自动提交表单
-          this.handleSubmit();
-        } else {
-          // this.setState({ currentQuestion: this.state.currentQuestion + 1 });
-        }
-      })
+      this.setState({ [field]: value, presentValue: [value] } as any);
     }
-  }
+  };
 
-  // shouldExit = (field: string, value: string | string[]): boolean => {
-  //   const exitConditions = this.getExitConditions()
-  //   if (field in exitConditions) {
-  //     const condition = exitConditions[field as keyof typeof exitConditions]
-  //     if (Array.isArray(value)) {
-  //       return value.some(v => condition.includes(v))
-  //     }
-  //     return condition.includes(value)
-  //   }
-  //   return false
-  // }
+  private accumulateQuestionStats = (): void => {
+    const { currentQuestion } = this.state;
+    const currentQ = questionsData.questions[String(currentQuestion)];
+    if (!currentQ) return;
 
-  passConditions = () => {
-    return {
-      // 核心字段
-      dustMiteAllergyDiagnosis: '是', // 
-      otherAllergenSensitivity: ['以上都没有'],
-      ageEligibility: '是', // 
-      gender: '',
-      pregnancyLactationPlanning: ['否'], // 
-      
-      // 疾病状况 - 有以下疾病则退出
-      respiratoryConditions: ['没有'],
-      immuneSystemConditions: ['没有以上情况'],
-      cardiovascularEndocrineConditions: ['没有以上疾病'],
-      chronicInfectionHistory: ['以上均没有'],
-      psychiatricOralOncologyConditions: ['没有以上疾病'],
-      severeAdverseReactionHistory: ['没有'],
-      systemicAllergicReactionHistory: ['没有以上情况'],
-      
-      // 治疗史
-      antidepressantAntipsychoticHistory: ['是'], 
-      pastDustMiteImmunotherapyHistory: ['接受过舌下治疗，超过1个月', '接受过过敏针治疗'],
-      pastYearDustMiteImmunotherapy: ['接受过舌下治疗', '接受过过敏针治疗'],
-      
-      // 近期用药和治疗
-      recentImmunosuppressiveMedicationUse: ['糖皮质激素', '生物制剂药物（如生物注射剂）'],
-      recentKetotifenAntipsychoticUse: ['酮替芬', '抗精神病药物'],
-      recentRespiratoryComplications: ['呼吸道感染', '哮喘急性发作且病情不稳定'],
-      pastTwoYearAllergicEvents: ['慢性荨麻疹', '严重急性过敏反应（如过敏性休克）', '血管性水肿'],
-      recentNasalSurgeryHistory: ['是'],
-      recentResearchParticipation: ['是'],
-      recentOralCorticosteroidUse: ['泼尼松（强的松）', '甲泼尼龙', '地塞米松', '口服过其他糖皮质激素药物'],
-      recentLongActingCorticosteroidUse: ['地塞米松', '倍他米松', '曲安奈德', '使用过其他长效或注射型糖皮质激素'],
-      recentAsthmaExacerbationEvents: ['急救治疗', '住院治疗', '全身性糖皮质激素治疗'],
-      recentBiologicTherapyUse: ['奥马珠单抗（茁乐）', '度普利尤单抗（达必妥）', '美泊利珠单抗（新可来）', '其他抗过敏生物制剂'],
-      
-      // 研究期间承诺和限制
-      contraceptionComplianceDuringStudy: ['不接受'],
-      studyLifestyleRestrictionCompliance: ['不接受'],
-      researcherRelationshipAndStudyEligibility: ['不符合'],
-      prohibitedMedicationComplianceDuringStudy: ['否'],
-      currentAllergenImmunotherapy: ['是']
+    const isInm = currentQ.research.includes('Inmunotek');
+    const isAlk = currentQ.research.includes('ALK');
+
+    const userValue = this.state[currentQ.field as keyof UserFormState];
+    const passValues: string[] = currentQ.pass ?? [];
+    let pass = false;
+
+    if (currentQ.multiple) {
+      // 多选：用户答案与 pass 数组至少有一个交集
+      const arr = Array.isArray(userValue) ? userValue : [userValue];
+      pass = passValues.length === 0
+            ? true // 空数组视为全部通过
+            : arr.some(v => passValues.includes(v));
+    } else {
+      // 单选：只要用户值在 pass 数组即可
+      pass = passValues.length === 0
+            ? true
+            : passValues.includes(userValue as string);
     }
-  }
 
-  // checkExitConditions = (field: string, value: string | string[]): void => {
-  //   if (this.shouldExit(field, value)) {
-  //     this.exitQuestionnaire()
-  //   }
-  // }
+    // 更新计数 & pass 标志
+    this.setState(prev => ({
+      inmunotekCount: prev.inmunotekCount + (isInm ? 1 : 0),
+      alkCount: prev.alkCount + (isAlk ? 1 : 0),
+      inmunotekPassFlags: isInm
+        ? [...prev.inmunotekPassFlags, pass]
+        : prev.inmunotekPassFlags,
+      alkPassFlags: isAlk
+        ? [...prev.alkPassFlags, pass]
+        : prev.alkPassFlags
+    }));
+  };
 
-  exitQuestionnaire = (): void => {
-    Taro.showModal({
-      title: '提示',
-      content: '很抱歉，您不符合本次研究的入组条件',
-      showCancel: false,
-      success: () => {
-        // Taro.navigateBack()
-        Taro.navigateTo({url: '/pages/index/index'})
-      }
-    })
-  }
+  handleNextQuestion = (): void => {
+    if (this.state.presentValue.length === 0) {
+      Taro.showToast({ title: '请至少选择一个选项', icon: 'none', duration: 1000 });
+      return;
+    }
+
+    // ① 统计本题
+    this.accumulateQuestionStats();
+
+    // ② 前进
+    if (this.state.currentQuestion === QUESTION_MAX_NUM) {
+      this.handleSubmit();
+    } else {
+      this.setState(prev => ({
+        currentQuestion: prev.currentQuestion + 1,
+        presentValue: []
+      }));
+    }
+  };
 
   handleSubmit = async (): Promise<void> => {
     try {
       console.log('问卷答案:', this.state)
-      console.log('Inmunotek 题目数量:', this.state.inmunotekCount)
-      console.log('ALK 题目数量:', this.state.alkCount)
+      const { inmunotekPassFlags, alkPassFlags } = this.state;
+      const inmPass = inmunotekPassFlags.filter(Boolean).length;
+      const alkPass = alkPassFlags.filter(Boolean).length;
+
+      const inmRate = this.state.inmunotekCount
+        ? (inmPass / this.state.inmunotekCount).toFixed(2)
+        : '-';
+      const alkRate = this.state.alkCount
+        ? (alkPass / this.state.alkCount).toFixed(2)
+        : '-';
+
+      console.log(`Inmunotek 通过率: ${inmRate} (${inmPass}/${this.state.inmunotekCount})`);
+      console.log(`ALK 通过率: ${alkRate} (${alkPass}/${this.state.alkCount})`);
       
       // 移除currentQuestion，它不需要展示在成功页面
       const { currentQuestion, ...formData } = this.state as unknown as UserFormState & { currentQuestion: number }
@@ -298,24 +251,8 @@ export default class UserForm extends Component<{}, UserFormState> {
     }
   }
 
-  handleNextQuestion = (): void => {
-    if(this.state.presentValue.length > 0) {
-      this.setState({ 
-        currentQuestion: this.state.currentQuestion + 1,
-        presentValue: []
-      })
-    } else {
-      Taro.showToast({
-        title: '请至少选择一个选项',
-        icon: 'none',
-        duration: 1000
-      })
-    }
-  }
 
-  handlePrevQuestion = (): void => {
-    this.setState({ currentQuestion: this.state.currentQuestion - 1 });
-  }
+
 
   renderQuestion = () => {
     const { currentQuestion } = this.state
@@ -363,7 +300,7 @@ export default class UserForm extends Component<{}, UserFormState> {
                 <View
                   key={option.value}
                   className={`option-item ${isSelected ? 'selected' : ''} ${isMultiSelect ? 'multi-select' : ''}`}
-                  onClick={() => this.handleChange(currentQ.field, option.value, isMultiSelect,currentQ.research)}
+                  onClick={() => this.handleChange(currentQ.field, option.value, Boolean(currentQ.multiple))}
                 >
                   <View className={`option-circle ${isMultiSelect ? 'square' : ''}`}>
                     <View className="option-inner" />
