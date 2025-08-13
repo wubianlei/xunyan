@@ -176,7 +176,17 @@ export default class UserForm extends Component<{}, UserFormState> {
       alkPassFlags: isAlk
         ? [...prev.alkPassFlags, pass]
         : prev.alkPassFlags
-    }));
+    }), ()=> {
+       // ② 前进
+      if (this.state.currentQuestion === QUESTION_MAX_NUM) {
+        this.handleSubmit();
+      } else {
+        this.setState(prev => ({
+          currentQuestion: prev.currentQuestion + 1,
+          presentValue: []
+        }));
+      }
+      });
   };
 
   handleNextQuestion = (): void => {
@@ -187,16 +197,6 @@ export default class UserForm extends Component<{}, UserFormState> {
 
     // ① 统计本题
     this.accumulateQuestionStats();
-
-    // ② 前进
-    if (this.state.currentQuestion === QUESTION_MAX_NUM) {
-      this.handleSubmit();
-    } else {
-      this.setState(prev => ({
-        currentQuestion: prev.currentQuestion + 1,
-        presentValue: []
-      }));
-    }
   };
 
   handleSubmit = async (): Promise<void> => {
