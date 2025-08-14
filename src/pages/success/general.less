@@ -241,8 +241,18 @@
         padding: @spacing-xs 0;
         border-radius: @border-radius-md;
         margin-top: @spacing-xs;
-        background-color: @success-green;
-        
+
+        &.primary {
+          background-color: @success-green;
+          color: white;
+        }
+
+        &.secondary {
+          background-color: #f5f5f5;
+          color: #666;
+          border: 1px solid #ddd;
+        }
+
         &:active {
           opacity: 0.8;
         }
@@ -314,6 +324,89 @@
         flex: 1;
         word-break: break-all;
         font-size: @font-size-lg;
+      }
+    }
+  }
+
+  /* 问卷通过率卡片（沿用已有变量） */
+  /* 研究详情卡片 */
+  .research-detail-card {
+    background: @background-white;
+    border-radius: @border-radius-lg;
+    padding: @spacing-md;
+    margin-bottom: @spacing-md;
+    box-shadow: @shadow-card;
+
+    &.inmunotek {
+      border-left: 4px solid #5b86e5;
+    }
+
+    &.alk {
+      border-left: 4px solid #ff9a9e;
+    }
+
+    &.inmunotek .rate-fill {
+      background: linear-gradient(90deg, #36d1dc, #5b86e5);
+    }
+
+    &.alk .rate-fill {
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    }
+
+    .card-title {
+      font-size: @font-size-xl;
+      font-weight: bold;
+      color: @text-dark;
+      margin-bottom: @spacing-sm;
+    }
+
+    .pass-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: @spacing-md;
+      width: 100%;
+      min-width: 0; // 防止 flex 收缩
+
+      .rate-fill {
+        height: 10px;
+        border-radius: 5px;
+        transition: width 0.5s ease;
+      }
+
+      
+
+      .rate-text {
+        margin-left: @spacing-xs;
+        font-size: @font-size-lg;
+        font-weight: bold;
+        color: @text-dark;
+        min-width: 42px;
+      }
+    }
+
+    .criteria {
+      margin-top: @spacing-md;
+
+      &.met .criteria-title {
+        color: @success-green;
+      }
+
+      &.unmet .criteria-title {
+        color: #ff4d4f;
+      }
+
+      .criteria-title {
+        font-size: @font-size-lg;
+        font-weight: bold;
+        margin-bottom: @spacing-xs;
+      }
+
+      .item {
+        display: block;
+        font-size: @font-size-md;
+        color: @text-medium;
+        margin: @spacing-xxs 0;
+        line-height: 1.4;
       }
     }
   }

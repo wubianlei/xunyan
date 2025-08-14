@@ -5,11 +5,18 @@
     "miniprogram": {
       "list": [
         {
-          "name": "综合问卷成功后",
+          "name": "pages/success/general",
           "pathName": "pages/success/general",
           "query": "",
           "scene": null,
           "launchMode": "default"
+        },
+        {
+          "name": "综合问卷成功后",
+          "pathName": "pages/success/general",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         },
         {
           "name": "pages/userForm/index",

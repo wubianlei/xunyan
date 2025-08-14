@@ -4,6 +4,7 @@ import { View, Text, Button } from '@tarojs/components'
 import { AtCard, AtProgress, AtDivider } from 'taro-ui'
 import { formDataService } from '../../services/formDataService'
 import type { UserFormData } from '../../models/userForm'
+import questionsData from '../userForm/mock/rhinitisFinal.json'
 import type { ResearchMatch } from '../../models/clinicalResearch'
 import { researchMatchService } from '../../services/rhinitisMatchService'
 import TabBar from '../../components/TabBar'
@@ -17,10 +18,14 @@ interface GeneralSuccessPageState {
   researchMatches: ResearchMatch[]
   totalMatchScore: number
   maxPossibleScore: number
+  inmunotekPassRate: string
+  alkPassRate: string
+  inmMet: string[]
+  inmUnmet: string[]
+  alkMet: string[]
+  alkUnmet: string[]
+  highestResearch: 'none' | 'Inmunotek' | 'ALK'
 }
-
-const NUM_OF_INMUNOTEK = 22
-const NUM_OF_ALK = 14
 
 export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPageState> {
   state: GeneralSuccessPageState = {
@@ -28,12 +33,21 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
     loading: true,
     error: null,
     researchMatches: [],
+    inmunotekPassRate: '-',
+    alkPassRate: '-',
+    inmMet: [],
+    inmUnmet: [],
+    alkMet: [],
+    alkUnmet: [],
     totalMatchScore: 0,
-    maxPossibleScore: 0 // 初始化为0，在计算匹配时动态设置
+    maxPossibleScore: 0, // 初始化为0，在计算匹配时动态设置
+    highestResearch: 'none'
   }
 
   componentDidMount() {
-    this.loadFormData()
+    this.loadFormData().then(() => {
+      this.preparePassDetail();
+    });
   }
 
   /**
@@ -71,9 +85,45 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
     }
   }
 
+  // 放在 calculateResearchMatches 之后即可
+  private preparePassDetail = () => {
+    const form = this.state.formData;
+    if (!form) return;
+
+    const questions = questionsData.questions;
+    const inmMet: string[] = [];
+    const inmUnmet: string[] = [];
+    const alkMet: string[] = [];
+    const alkUnmet: string[] = [];
+
+    Object.entries(questions).forEach(([idx, q]) => {
+      const userVal = form[q.field as keyof UserFormData];
+      const passArr = q.pass ?? [];
+      const isMultiple = q.multiple ?? false;
+
+      let passed = false;
+      if (isMultiple) {
+        const arr = Array.isArray(userVal) ? userVal : [userVal];
+        passed = passArr.length === 0 || arr.some(v => passArr.includes(v));
+      } else {
+        passed = passArr.length === 0 || passArr.includes(userVal as string);
+      }
+
+      // 根据所属研究分类
+      if (q.research.includes('Inmunotek')) {
+        passed ? inmMet.push(`Q${idx}: ${q.title}`) : inmUnmet.push(`Q${idx}: ${q.title}`);
+      }
+      if (q.research.includes('ALK')) {
+        passed ? alkMet.push(`Q${idx}: ${q.title}`) : alkUnmet.push(`Q${idx}: ${q.title}`);
+      }
+    })
 
 
-  loadFormData = () => {
+
+    this.setState({ inmMet, inmUnmet, alkMet, alkUnmet });
+  };
+
+  loadFormData = async () => {
     this.setState({
       loading: true,
       error: null
@@ -112,7 +162,35 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
         error: null
       }, () => {
         // 计算研究匹配度
-        this.calculateResearchMatches(formData);
+        this.calculateResearchMatches(formData)
+        // 计算 Inmunotek & ALK 通过率
+        const inmFlags = formData.inmunotekPassFlags ?? [];
+        const alkFlags = formData.alkPassFlags ?? [];
+        const inmCnt   = formData.inmunotekCount ?? 0;
+        const alkCnt   = formData.alkCount ?? 0;
+
+        const inmRate  = inmCnt ? ((inmFlags.filter(Boolean).length / inmCnt) * 100).toFixed(0) + '%' : '0%';
+        const alkRate  = alkCnt ? ((alkFlags.filter(Boolean).length / alkCnt) * 100).toFixed(0) + '%' : '0%';
+        
+        // 找出匹配率最高的研究
+
+        const inmPct = inmCnt ? (inmFlags.filter(Boolean).length / inmCnt) : 0;
+        const alkPct = alkCnt ? (alkFlags.filter(Boolean).length / alkCnt) : 0;
+
+        let highest: 'none' | 'Inmunotek' | 'ALK' = 'none';
+        if (inmPct > alkPct) {
+          highest = 'Inmunotek'
+        } else if (alkPct > inmPct) {
+          highest = 'ALK'
+        } else if (inmPct > 0) {
+          highest = 'Inmunotek' // 平局时默认先显示 Inmunotek
+        }
+        
+        this.setState({ 
+          inmunotekPassRate: inmRate,
+          alkPassRate: alkRate,
+          highestResearch: highest 
+        })
       });
     } catch (error) {
       console.error('加载表单数据失败:', error);
@@ -162,60 +240,57 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
       )
     }
     
-
-    // 计算总体匹配百分比
-    const totalPercentage = Math.round((totalMatchScore / maxPossibleScore) * 100);
-    
     return (
       <View className='research-matches'>
-        <View className='total-match-score'>
-          <View className='score-header'>
-            <Text className='score-title'>总体研究匹配度</Text>
-            <Text className='score-value'>{totalMatchScore}/{maxPossibleScore}</Text>
-          </View>
-          <AtProgress percent={totalPercentage} color={totalPercentage >= 70 ? '#13CE66' : totalPercentage >= 40 ? '#FFCA3A' : '#FF4949'} />
-        </View>
         
         <AtDivider content='具体研究匹配情况' fontColor='#333' lineColor='#e5e5e5' />
         
-        {researchMatches.map((match) => {
-          // 使用模型中的匹配百分比
-          const matchPercentage = Math.round(match.matchPercentage);
-          const matchColor = matchPercentage >= 70 ? '#13CE66' : matchPercentage >= 40 ? '#FFCA3A' : '#FF4949';
-          
-          return (
-            <View key={match.researchId} className='match-item'>
-              <View className='match-header'>
-                <Text className='match-name'>{match.name}</Text>
-                <Text className='match-score' style={{ color: matchColor }}>{match.matchScore}/{match.maxPossibleScore} ({matchPercentage}%)</Text>
-              </View>
-              <AtProgress percent={matchPercentage} color={matchColor} />
-              <Text className='match-description'>{match.description}</Text>
-              <View className='match-requirements'>
-                <Text className='requirements-title'>主要入组条件：</Text>
-                {match.requirements.map((req, i) => (
-                  <Text key={i} className='requirement-item'>· {req}</Text>
-                ))}
-              </View>
-              {match.metCriteria.length > 0 && (
-                <View className='match-met-criteria'>
-                  <Text className='criteria-title'>满足的标准：</Text>
-                  {match.metCriteria.map((criterion, i) => (
-                    <Text key={i} className='criterion-item success'>✓ {criterion}</Text>
-                  ))}
-                </View>
-              )}
-              {match.unmetCriteria.length > 0 && (
-                <View className='match-unmet-criteria'>
-                  <Text className='criteria-title'>未满足的标准：</Text>
-                  {match.unmetCriteria.map((criterion, i) => (
-                    <Text key={i} className='criterion-item warning'>✗ {criterion}</Text>
-                  ))}
-                </View>
-              )}
+        {/* 问卷通过率卡片 */}
+        {/* Inmunotek 卡片 */}
+        <View className='research-detail-card inmunotek'>
+          <Text className='card-title'>Inmunotek 临床研究</Text>
+          <View className='pass-bar'>
+            <View className='rate-fill' style={{ width: `${this.state.inmunotekPassRate}` }} />
+            <Text className='rate-text'>{this.state.inmunotekPassRate}</Text>
+          </View>
+
+          {this.state.inmMet.length > 0 && (
+            <View className='criteria met'>
+              <Text className='criteria-title'>已满足</Text>
+              {this.state.inmMet.map((t, i) => <Text key={i} className='item'>✓ {t}</Text>)}
             </View>
-          )
-        })}
+          )}
+
+          {this.state.inmUnmet.length > 0 && (
+            <View className='criteria unmet'>
+              <Text className='criteria-title'>未满足</Text>
+              {this.state.inmUnmet.map((t, i) => <Text key={i} className='item'>✗ {t}</Text>)}
+            </View>
+          )}
+        </View>
+
+        {/* ALK 卡片 */}
+        <View className='research-detail-card alk'>
+          <Text className='card-title'>ALK 临床研究</Text>
+          <View className='pass-bar'>
+            <View className='rate-fill' style={{ width: `${this.state.alkPassRate}` }} />
+            <Text className='rate-text'>{this.state.alkPassRate}</Text>
+          </View>
+
+          {this.state.alkMet.length > 0 && (
+            <View className='criteria met'>
+              <Text className='criteria-title'>已满足</Text>
+              {this.state.alkMet.map((t, i) => <Text key={i} className='item'>✓ {t}</Text>)}
+            </View>
+          )}
+
+          {this.state.alkUnmet.length > 0 && (
+            <View className='criteria unmet'>
+              <Text className='criteria-title'>未满足</Text>
+              {this.state.alkUnmet.map((t, i) => <Text key={i} className='item'>✗ {t}</Text>)}
+            </View>
+          )}
+        </View>  
       </View>
     )
   }
@@ -229,24 +304,63 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
     console.log('hasHighMatch======',hasHighMatch)
     console.log('researchMatches=====',researchMatches)
     return (
+      // <View className='next-steps'>
+      //   <AtDivider content='下一步' fontColor='#333' lineColor='#e5e5e5' />
+        
+      //   <View className='steps-content'>
+      //     <Text className='steps-title'>{hasHighMatch ? '恭喜您！您可能符合我们的研究条件' : '感谢您完成初步评估'}</Text>
+      //     <Text className='steps-description'>
+      //       {hasHighMatch 
+      //         ? '根据您的信息，您与我们的一项或多项研究有较高的匹配度。我们建议您尽快联系您的主治医生或我们的研究团队，进行下一步详细评估。'
+      //         : '请继续回答更详细的问卷，全部完成后可能与我们的一项或多项研究有较高的匹配度。'
+      //         }
+      //     </Text>
+          
+      //     <View className='steps-list'>
+      //       <Text className='steps-list-title'>接下来您可以：</Text>
+      //       <Text className='steps-list-item'>*. 继续回答临床研究的独立问卷。</Text>
+      //     </View>
+      //     <Button className='contact-button' type='primary'>Inmunotek 临床研究</Button>
+      //     <Button className='contact-button' onClick={this.handleCoreQuestions} type='primary'>ALK 临床研究</Button>
+      //   </View>
+      // </View>
       <View className='next-steps'>
         <AtDivider content='下一步' fontColor='#333' lineColor='#e5e5e5' />
-        
+
         <View className='steps-content'>
-          <Text className='steps-title'>{hasHighMatch ? '恭喜您！您可能符合我们的研究条件' : '感谢您完成初步评估'}</Text>
-          <Text className='steps-description'>
-            {hasHighMatch 
-              ? '根据您的信息，您与我们的一项或多项研究有较高的匹配度。我们建议您尽快联系您的主治医生或我们的研究团队，进行下一步详细评估。'
-              : '请继续回答更详细的问卷，全部完成后可能的匹配条数将达19条，匹配符合率60%。剩下13条中11条需要医生确认，34%，2条需要在筛选期进行额外检查确认，6%'
-              }
+          <Text className='steps-title'>
+            {this.state.highestResearch === 'none'
+              ? '感谢您的填写'
+              : `恭喜您！您可能符合我们的研究条件。\n ${this.state.highestResearch} 临床研究的匹配度最高，可继续回答独立问卷。`}
           </Text>
-          
-          <View className='steps-list'>
-            <Text className='steps-list-title'>接下来您可以：</Text>
-            <Text className='steps-list-item'>*. 继续回答临床研究的独立问卷。</Text>
-          </View>
-          <Button className='contact-button' type='primary'>Inmunotek 研究</Button>
-          <Button className='contact-button' onClick={this.handleCoreQuestions} type='primary'>ALK 研究</Button>
+
+          {/* 主按钮（显眼） */}
+          {this.state.highestResearch !== 'none' && (
+            <Button
+              className='contact-button primary'
+              type='primary'
+              onClick={() =>
+                Taro.navigateTo({
+                  url: `/pages/userForm/core?research=${this.state.highestResearch}`
+                })
+              }
+            >
+              继续 {this.state.highestResearch} 临床研究
+            </Button>
+          )}
+
+          {/* 次显按钮（其他研究） */}
+          {['Inmunotek', 'ALK'].map(research =>
+            research !== this.state.highestResearch && (
+              <Button
+                key={research}
+                className='contact-button secondary'
+                onClick={() => Taro.navigateTo({ url: `/pages/userForm/core?research=${research}` })}
+              >
+                {research} 临床研究（可选）
+              </Button>
+            )
+          )}
         </View>
       </View>
     )
@@ -289,7 +403,7 @@ export default class GeneralSuccessPage extends Component<{}, GeneralSuccessPage
         <Text className='success-subtitle'>您的综合问卷信息已经成功提交</Text>
       </View>
 
-
+      {this.renderResearchMatches()}
       {/* 下一步指导 */}
       {this.renderNextSteps()}
 

@@ -8,6 +8,7 @@
       ],
       "field": "dustMiteAllergyDiagnosis",
       "research": ["Inmunotek", "ALK"],
+      "multiple": false,
       "pass": ["是"]
     },
     "2": {
@@ -33,6 +34,7 @@
       ],
       "field": "ageEligibility",
       "research": ["Inmunotek", "ALK"],
+      "multiple": false,
       "pass": ["是"]
     },
     "4": {
@@ -43,6 +45,7 @@
       ],
       "field": "gender",
       "research": ["Inmunotek", "ALK"],
+      "multiple": false,
       "pass": ["男","女"]
     },
     "5": {
@@ -55,6 +58,7 @@
       "precondition": "女",
       "field": "pregnancyLactationPlanning",
       "research": ["Inmunotek", "ALK"],
+      "multiple": false,
       "pass": ["否"]
     },
     "6": {
@@ -163,6 +167,7 @@
       ],
       "field": "antidepressantAntipsychoticHistory",
       "research": ["ALK"],
+      "multiple": false,
       "pass": ["否"]
     },
     "14": {
@@ -235,6 +240,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "recentNasalSurgeryHistory",
+      "multiple": false,
       "pass": ["否"]
     },
     "20": {
@@ -245,6 +251,7 @@
       ],
       "research": ["ALK"],
       "field": "recentResearchParticipation",
+      "multiple": false,
       "pass": ["否"]
     },
     "21": {
@@ -324,6 +331,7 @@
       "depend": "gender",
       "precondition": "女",
       "field": "contraceptionComplianceDuringStudy",
+      "multiple": false,
       "pass": ["可以"]
     },
     "27": {
@@ -334,6 +342,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "studyLifestyleRestrictionCompliance",
+      "multiple": false,
       "pass": ["可以"]
     },
     "28": {
@@ -344,6 +353,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "researcherRelationshipAndStudyEligibility",
+      "multiple": false,
       "pass": ["符合"]
     },
     "29": {
@@ -354,6 +364,7 @@
       ],
       "research": ["Inmunotek"],
       "field": "prohibitedMedicationComplianceDuringStudy",
+      "multiple": false,
       "pass": ["是"]
     },
     "30": {
@@ -364,6 +375,7 @@
       ],
       "research": ["Inmunotek", "ALK"],
       "field": "currentAllergenImmunotherapy",
+      "multiple": false,
       "pass": ["否"]
     }
   }

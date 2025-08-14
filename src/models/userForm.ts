@@ -43,6 +43,14 @@ export interface UserFormData {
   researcherRelationshipAndStudyEligibility: string
   prohibitedMedicationComplianceDuringStudy: string
   currentAllergenImmunotherapy: string
+
+  // 答题数量
+  inmunotekCount: number
+  alkCount: number
+
+  // 每题是否通过
+  inmunotekPassFlags: boolean[]
+  alkPassFlags: boolean[]
 }
 
 export interface UserFormSubmission {
