@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { View, Text } from '@tarojs/components'
+import { View, Text, Button } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { AtButton, AtCard, AtIcon } from 'taro-ui'
 import TabBar from '../../components/TabBar'
@@ -37,6 +37,34 @@ export default class Index extends Component {
       url: '/pages/login/index'
     })
   }
+
+  handleGetRealTimePhoneNumber = (
+    e: any
+  ) => {
+    // 微信返回的字段
+    const { code, errMsg, errno } = e.detail;
+
+    if (code) {
+      // 把 code 传给你的后台
+      console.log('code:',code)
+      // Taro.request({
+      //   url: `${API_BASE}/wx/getPhoneByCode`,
+      //   method: 'POST',
+      //   data: { code },               // 仅传 code
+      //   success: (res) => {
+      //     const { phoneNumber } = res.data;
+      //     console.log('用户手机号：', phoneNumber);
+      //     // TODO: 登录/注册业务
+      //   },
+      //   fail: () => {
+      //     Taro.showToast({ title: '获取失败', icon: 'none' });
+      //   }
+      // });
+    } else {
+      // 用户拒绝或系统错误
+      console.error(errMsg, errno);
+    }
+  };
   
   render () {
     return (
@@ -81,7 +109,13 @@ export default class Index extends Component {
               <AtIcon value='chevron-right' size='18' color='#fff' />
             </View>
           </AtButton>
-          <Text className='action-hint' onClick={this.loginNow}>立即登录</Text>
+          <Button
+            type="primary"
+            openType="getRealtimePhoneNumber"
+            onGetRealTimePhoneNumber={this.handleGetRealTimePhoneNumber}
+          >
+            一键获取手机号
+          </Button>
           
           <View className='history-link' onClick={this.handleNavigateToHistory}>
             <AtIcon value='list' size='16' color='#1890ff' />
