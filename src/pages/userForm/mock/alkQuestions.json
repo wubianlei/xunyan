@@ -1,0 +1,364 @@
+{
+  "questions": {
+    "1": {
+      "title": "是否已签署知情同意书？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "informedConsent",
+      "pass": ["符合"]
+    },
+    "2": {
+      "title": "年龄是否在12-65岁之间？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "ageRange",
+      "pass": ["符合"]
+    },
+    "3": {
+      "title": "是否有1年以上尘螨过敏性鼻炎/鼻结膜炎的诊断？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "dustMiteAllergicRhinitisDiagnosis",
+      "pass": ["符合"]
+    },
+    "4": {
+      "title": "是否在1年内接受过抗过敏药物治疗，但仍有过敏性鼻炎症状？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastYearAntiAllergyTreatmentWithSymptoms",
+      "pass": ["符合"]
+    },
+    "5": {
+      "title": "基线评估期评分是否达标？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "baselineAssessmentScore1",
+      "pass": ["符合"]
+    },
+    "6": {
+      "title": "基线评估期评分是否达标（第二次）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "baselineAssessmentScore2",
+      "pass": ["符合"]
+    },
+    "7": {
+      "title": "尘螨皮肤点刺是否≥5mm？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "dustMiteSkinPrickTest",
+      "pass": ["符合"]
+    },
+    "8": {
+      "title": "尘螨IgE是否≥3.5 kU/L？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "dustMiteIgELevel",
+      "pass": ["符合"]
+    },
+    "9": {
+      "title": "FEV1或PEFR是否≥70%预测值？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "lungFunctionTest",
+      "pass": ["符合"]
+    },
+    "10": {
+      "title": "参与者是否愿意遵守方案？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "protocolCompliance",
+      "pass": ["符合"]
+    },
+    "11": {
+      "title": "基线评估期是否完成评估？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "baselineAssessmentCompletion",
+      "pass": ["符合"]
+    },
+    "12": {
+      "title": "是否有霉菌过敏，IgE>0.35 kU/L？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "moldAllergyIgE",
+      "pass": ["不符合"]
+    },
+    "13": {
+      "title": "是否存在其他常年性变应原过敏导致的鼻炎/鼻结膜炎病史，且在基线和/或有效性评估期间会接触到相应过敏原？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "otherPerennialAllergenExposure",
+      "pass": ["不符合"]
+    },
+    "14": {
+      "title": "是否存在季节性变应原引起的季节性鼻炎/鼻结膜炎，且在基线/或有效性评估期间会接触到相应过敏原？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "seasonalAllergenExposure",
+      "pass": ["不符合"]
+    },
+    "15": {
+      "title": "是否患有任何可能干扰安全性或有效性评价的鼻部或咽部疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "nasalOrPharyngealDisease",
+      "pass": ["不符合"]
+    },
+    "16": {
+      "title": "是否在过去5年内曾接受屋尘螨或粉尘螨舌下免疫治疗超过1个月？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastFiveYearSublingual",
+      "pass": ["不符合"]
+    },
+    "17": {
+      "title": "是否在过去12个月内曾接受过屋尘螨或粉尘螨舌下免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastTwelveMonthSublingual",
+      "pass": ["不符合"]
+    },
+    "18": {
+      "title": "是否在过去5年内接受过达到维持剂量的屋尘螨或粉尘螨过敏针免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastFiveYearSCIT",
+      "pass": ["不符合"]
+    },
+    "19": {
+      "title": "是否在过去12个月内曾接受过屋尘螨或粉尘螨过敏针免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastTwelveMonthSCIT",
+      "pass": ["不符合"]
+    },
+    "20": {
+      "title": "是否正在使用针对特定过敏原的脱敏免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "currentSpecificImmunotherapy",
+      "pass": ["不符合"]
+    },
+    "21": {
+      "title": "是否持续存在口腔炎症？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "persistentOralInflammation",
+      "pass": ["不符合"]
+    },
+    "22": {
+      "title": "是否诊断为嗜酸细胞性食管炎或有相关病史？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "eosinophilicEsophagitis",
+      "pass": ["不符合"]
+    },
+    "23": {
+      "title": "是否在筛选前130天内接受过除糖皮质激素外任何全身性免疫抑制治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "past130DaySystemicImmunosuppression",
+      "pass": ["不符合"]
+    },
+    "24": {
+      "title": "是否在60天内接受过任何口服糖皮质激素治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "past60DayOralCorticosteroid",
+      "pass": ["不符合"]
+    },
+    "25": {
+      "title": "是否在90天内接受过任何长效制剂或注射剂全身性糖皮质激素治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "past90DayLongActingCorticosteroid",
+      "pass": ["不符合"]
+    },
+    "26": {
+      "title": "是否患有哮喘且需要接受第5级治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "asthmaRequiringStep5Treatment",
+      "pass": ["不符合"]
+    },
+    "27": {
+      "title": "是否在3个月内发生过因为哮喘恶化导致的急救治疗、住院治疗或全身性糖皮质激素治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastThreeMonthAsthmaExacerbation",
+      "pass": ["不符合"]
+    },
+    "28": {
+      "title": "是否有研究者认为会影响试验评价或参与者安全性的任何临床相关慢性疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "clinicallyRelevantChronicDisease",
+      "pass": ["不符合"]
+    },
+    "29": {
+      "title": "是否有恶性肿瘤？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "malignantTumor",
+      "pass": ["不符合"]
+    },
+    "30": {
+      "title": "是否在2年内有>6周慢性荨麻疹或慢性血管性水肿病史，且研究者认为会导致安全性风险增加？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastTwoYearChronicUrticariaOrAngioedema",
+      "pass": ["不符合"]
+    },
+    "31": {
+      "title": "是否有全身过敏性反应相关病史且研究者认为可能会导致安全性风险增加？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "systemicAllergicReactionHistory",
+      "pass": ["不符合"]
+    },
+    "32": {
+      "title": "是否有全身免疫性疾病，或存在免疫缺陷、免疫抑制？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "systemicImmuneDisorderOrDeficiency",
+      "pass": ["不符合"]
+    },
+    "33": {
+      "title": "是否使用了可能影响有效性终点的药物治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "medicationAffectingEfficacyEndpoints",
+      "pass": ["不符合"]
+    },
+    "34": {
+      "title": "是否已知对IMP的任何辅料或活性物质有过敏、超敏反应或不耐受史？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "allergyToIMPComponents",
+      "pass": ["不符合"]
+    },
+    "35": {
+      "title": "是否处于妊娠、哺乳期，或计划妊娠？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pregnancyLactationOrPlanning",
+      "pass": ["不符合"]
+    },
+    "36": {
+      "title": "是否不接受避孕？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "contraceptionRefusal",
+      "pass": ["不符合"]
+    }
+  }
+}

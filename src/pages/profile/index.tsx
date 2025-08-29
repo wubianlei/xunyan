@@ -111,7 +111,7 @@ export default class Profile extends Component {
           <Text className='footer-version'>版本 1.0.0</Text>
         </View>
         <View className='tabbar-placeholder'></View>
-        <TabBar current={3 as number} />
+        <TabBar current={2 as number} />
       </View>
     )
   }

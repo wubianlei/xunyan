@@ -44,12 +44,12 @@ const tabs: TabItem[] = [
     iconNormal: formIcon,
     pagePath: '/pages/userForm/index'
   },
-  {
-    title: '提交',
-    iconActive: historyIcon,
-    iconNormal: historyIcon,
-    pagePath: '/pages/history/index'
-  },
+  // {
+  //   title: '提交',
+  //   iconActive: historyIcon,
+  //   iconNormal: historyIcon,
+  //   pagePath: '/pages/history/index'
+  // },
   {
     title: '我的',
     iconActive: userIcon,

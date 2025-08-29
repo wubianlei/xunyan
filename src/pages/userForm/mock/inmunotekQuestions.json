@@ -1,0 +1,624 @@
+{
+  "questions": {
+    "1": {
+      "title": "是否已签署知情同意书？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "informedConsent",
+      "pass": ["符合"]
+    },
+    "2": {
+      "title": "年龄是否在12-65岁之间？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "ageRange",
+      "pass": ["符合"]
+    },
+    "3": {
+      "title": "是否有1年以上屋尘螨或粉尘螨过敏性鼻炎/鼻结膜炎？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "dustMiteAllergicRhinitis",
+      "pass": ["符合"]
+    },
+    "4": {
+      "title": "屋尘螨/粉尘螨皮肤点刺风团直径是否≥5 mm？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "skinPrickTestResult",
+      "pass": ["符合"]
+    },
+    "5": {
+      "title": "是否处于非妊娠状态？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "nonPregnancyStatus",
+      "pass": ["符合"]
+    },
+    "6": {
+      "title": "有生育能力女性是否同意避孕？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "contraceptionAgreement",
+      "pass": ["符合"]
+    },
+    "7": {
+      "title": "是否同意遵守试验方案？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "protocolCompliance",
+      "pass": ["符合"]
+    },
+    "8": {
+      "title": "是否拥有智能手机？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "smartphoneOwnership",
+      "pass": ["符合"]
+    },
+    "9": {
+      "title": "是否仅对屋尘螨/粉尘螨过敏，或仅对皮屑和地方性花粉过敏（且符合暴露限制条件）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "specificAllergenRestriction",
+      "pass": ["符合"]
+    },
+    "10": {
+      "title": "是否不对霉菌、蟑螂、热带螨或其他地域相关螨虫过敏？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "excludedAllergenSensitivity",
+      "pass": ["符合"]
+    },
+    "11": {
+      "title": "基线评估期RCSMS是否至少有10天大于3分？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "baselineRCSMSScore",
+      "pass": ["符合"]
+    },
+    "12": {
+      "title": "屋尘螨或粉尘螨IgE检测是否≥3.5 kU/L？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "dustMiteIgELevel",
+      "pass": ["符合"]
+    },
+    "13": {
+      "title": "是否在5年内接受过屋尘螨或粉尘螨免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastFiveYearDustMiteImmunotherapy",
+      "pass": ["不符合"]
+    },
+    "14": {
+      "title": "是否在2年内接受任何脱敏治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastTwoYearDesensitizationTreatment",
+      "pass": ["不符合"]
+    },
+    "15": {
+      "title": "是否当下接受屋尘螨和粉尘螨之外过敏原的免疫治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "currentOtherAllergenImmunotherapy",
+      "pass": ["不符合"]
+    },
+    "16": {
+      "title": "是否为哮喘（部分受控）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "partiallyControlledAsthma",
+      "pass": ["不符合"]
+    },
+    "17": {
+      "title": "是否为自身免疫疾病-缓解中？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "autoimmuneDiseaseinRemission",
+      "pass": ["不符合"]
+    },
+    "18": {
+      "title": "是否有心血管疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "cardiovascularDisease",
+      "pass": ["不符合"]
+    },
+    "19": {
+      "title": "是否有HIV（A，B阶段；CD4+ > 200/ul）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "hivInfectionABStage",
+      "pass": ["不符合"]
+    },
+    "20": {
+      "title": "是否确诊为AIDS？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "aidsConfirmed",
+      "pass": ["不符合"]
+    },
+    "21": {
+      "title": "是否有精神疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "psychiatricDisease",
+      "pass": ["不符合"]
+    },
+    "22": {
+      "title": "是否有慢性感染？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "chronicInfection",
+      "pass": ["不符合"]
+    },
+    "23": {
+      "title": "是否有免疫缺陷？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "immunodeficiency",
+      "pass": ["不符合"]
+    },
+    "24": {
+      "title": "FEV1是否<80%？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "fev1Below80Percent",
+      "pass": ["不符合"]
+    },
+    "25": {
+      "title": "是否存在根据GINA 2022未受控制的哮喘或症状控制不佳？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "uncontrolledAsthmaGINA",
+      "pass": ["不符合"]
+    },
+    "26": {
+      "title": "是否存在根据GINA 2022患有严重哮喘且正在接受第4步或第5步治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "severeAsthmaStep4or5Treatment",
+      "pass": ["不符合"]
+    },
+    "27": {
+      "title": "是否正在接受β受体阻滞剂或血管紧张素转化酶（ACE）抑制剂治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "betaBlockerOrACEInhibitorTreatment",
+      "pass": ["不符合"]
+    },
+    "28": {
+      "title": "是否正在接受免疫抑制剂治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "currentImmunosuppressantTreatment",
+      "pass": ["不符合"]
+    },
+    "29": {
+      "title": "是否正在接受生物制剂治疗？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "currentBiologicTreatment",
+      "pass": ["不符合"]
+    },
+    "30": {
+      "title": "是否在5天内使用过H1抗组胺药？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentH1AntihistamineUse",
+      "pass": ["不符合"]
+    },
+    "31": {
+      "title": "是否在14天内使用过酮替芬？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentKetotifenUse",
+      "pass": ["不符合"]
+    },
+    "32": {
+      "title": "是否存在糖皮质激素使用限制要求？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "corticosteroidRestrictions",
+      "pass": ["不符合"]
+    },
+    "33": {
+      "title": "是否在14天内使用过抗精神病药物？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentAntipsychoticUse",
+      "pass": ["不符合"]
+    },
+    "34": {
+      "title": "是否在3个月内使用过抗IgE药物？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentAntiIgEMedicationUse",
+      "pass": ["不符合"]
+    },
+    "35": {
+      "title": "是否在3个月内使用过抗白介素药物？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentAntiInterleukinMedicationUse",
+      "pass": ["不符合"]
+    },
+    "36": {
+      "title": "是否在3个月内使用过其他免疫抑制剂？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentOtherImmunosuppressantUse",
+      "pass": ["不符合"]
+    },
+    "37": {
+      "title": "是否在4周内患有呼吸道感染？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentRespiratoryInfection",
+      "pass": ["不符合"]
+    },
+    "38": {
+      "title": "是否在4周内哮喘急性发作病情不稳定？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "recentUnstableAsthmaExacerbation",
+      "pass": ["不符合"]
+    },
+    "39": {
+      "title": "是否在2年内有慢性荨麻疹或严重速发过敏反应？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastTwoYearChronicUrticariaOrSevereReaction",
+      "pass": ["不符合"]
+    },
+    "40": {
+      "title": "是否有遗传性血管性水肿病史？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "hereditaryAngioedemaHistory",
+      "pass": ["不符合"]
+    },
+    "41": {
+      "title": "是否有使用肾上腺素的禁忌症（甲状腺功能亢进症）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "epinephrineContraindicationHyperthyroidism",
+      "pass": ["不符合"]
+    },
+    "42": {
+      "title": "是否有使用肾上腺素的禁忌症（心脏病或高血压）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "epinephrineContraindicationCardiacOrHypertension",
+      "pass": ["不符合"]
+    },
+    "43": {
+      "title": "是否患有与变应性鼻炎或哮喘无关的其他严重疾病且可能会影响研究治疗或随访？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "unrelatedSeriousDiseasesAffectingStudy",
+      "pass": ["不符合"]
+    },
+    "44": {
+      "title": "是否患有重度自身免疫性疾病（如甲状腺炎，狼疮等）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "severeAutoimmuneDisease",
+      "pass": ["不符合"]
+    },
+    "45": {
+      "title": "是否患有肿瘤相关疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "tumorRelatedDisease",
+      "pass": ["不符合"]
+    },
+    "46": {
+      "title": "是否患有免疫功能缺陷且对治疗无反应？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "immunodeficiencyUnresponsiveToTreatment",
+      "pass": ["不符合"]
+    },
+    "47": {
+      "title": "是否无法遵循研究方案或患有严重精神疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "unableToFollowProtocolOrSeverePsychiatric",
+      "pass": ["不符合"]
+    },
+    "48": {
+      "title": "是否对研究过敏原以外的任何研究治疗药物成分过敏？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "allergyToStudyMedicationComponents",
+      "pass": ["不符合"]
+    },
+    "49": {
+      "title": "是否患有可能影响有效性和/或安全性合理评估的鼻部疾病并发症？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "nasalDiseaseComplicationsAffectingStudy",
+      "pass": ["不符合"]
+    },
+    "50": {
+      "title": "是否在6个月内进行过鼻腔手术？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastSixMonthNasalSurgery",
+      "pass": ["不符合"]
+    },
+    "51": {
+      "title": "是否计划在研究期间接受鼻腔手术？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "plannedNasalSurgeryDuringStudy",
+      "pass": ["不符合"]
+    },
+    "52": {
+      "title": "是否患有口腔病变可能会影响研究治疗药物安全性评估？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "oralLesionsAffectingSafetyAssessment",
+      "pass": ["不符合"]
+    },
+    "53": {
+      "title": "是否需要使用抗组胺药和/或皮质类固醇治疗用于除缓解变应性鼻炎症状以外的其他目的？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "needAntihistamineOrCorticosteroidForOtherPurposes",
+      "pass": ["不符合"]
+    },
+    "54": {
+      "title": "是否患有哮喘以外的下呼吸道疾病？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "lowerRespiratoryDiseaseOtherThanAsthma",
+      "pass": ["不符合"]
+    },
+    "55": {
+      "title": "是否处于妊娠或哺乳期？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pregnancyOrLactationStatus",
+      "pass": ["不符合"]
+    },
+    "56": {
+      "title": "是否为研究者直系亲属？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "researcherDirectRelative",
+      "pass": ["不符合"]
+    },
+    "57": {
+      "title": "是否在30天内参加过其他研究？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "pastThirtyDayOtherStudyParticipation",
+      "pass": ["不符合"]
+    },
+    "58": {
+      "title": "是否同时正在参与其他研究？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "concurrentOtherStudyParticipation",
+      "pass": ["不符合"]
+    },
+    "59": {
+      "title": "是否对食物、膜翅目昆虫毒液或药物等有严重全身不良反应史？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "severeSystemicAdverseReactionHistory",
+      "pass": ["不符合"]
+    },
+    "60": {
+      "title": "是否预计在研究期间生活环境会发生明显变化（例如搬家）？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "expectedSignificantEnvironmentalChange",
+      "pass": ["不符合"]
+    },
+    "61": {
+      "title": "是否计划在研究期间开始使用防螨床上用品或类似相关装备？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "plannedMiteProofBeddingUse",
+      "pass": ["不符合"]
+    },
+    "62": {
+      "title": "根据研究者评估是否被认为不适合参与本研究？",
+      "options": [
+        { "label": "符合", "value": "符合" },
+        { "label": "不符合", "value": "不符合" },
+        { "label": "无法判断", "value": "无法判断" }
+      ],
+      "field": "investigatorAssessmentUnsuitability",
+      "pass": ["不符合"]
+    }
+  }
+}
